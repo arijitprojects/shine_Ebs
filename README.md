@@ -1,12 +1,8 @@
-# shine-ebs
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.16.0.
+1)Download node
+1)Intall node
+1)Check C:\>node –v
+1)Check C:\>npm –v
+1)run  C:\> npm install –g @angular/cli
+1) From terminal go to project folder. then run C:\>grunt serve
 
-## Build & development
-
-Run `grunt` for building and `grunt serve` for preview.
-
-## Testing
-
-Running `grunt test` will run the unit tests with karma.
