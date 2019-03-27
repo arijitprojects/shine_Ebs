@@ -22,32 +22,53 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            <a class="navbar-brand" href="#/">shineEbs</a>
-          </div>
-
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="/organization">organization</a></li>
-              <li><a ng-href="#/">Contact</a></li>
-            </ul>
+    <header>
+      <div class="container-fluid bg-secondary">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="d-flex flex-wrap justify-content-end">
+              <div class="p-2 text-white"><i class="fa fa-phone"></i>&nbsp;8016568259</div>
+              <div class="p-2"><a href="login.html" class="decoration-none text-white">LogIn</a></div>
+              <div class="p-2"><a href="registration.html" class="decoration-none text-white">Registration</a></div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      
+      <nav class="navbar navbar-expand-lg navbar-light bg-white shadow">
+        <a class="navbar-brand" href="#">EziCBS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="\organization">Organisation HO <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="\branch">Organisation Branch</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="\profile">Employee Profile</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action 1</a>
+                <a class="dropdown-item" href="#">Action 2</a>          
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li> 
+            <li class="nav-item">
+              <a class="nav-link" href="#">Something</a>
+            </li>     
+          </ul>    
+        </div>
+      </nav>
+    </header>
 
     <div class="container">
     <div ng-view=""></div>
@@ -87,11 +108,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script>
-        $( "#orgRegdDate" ).datepicker({
-        dateFormat: "dd-mm-yy"
-        });
-    </script>
+    
 
 
     <!-- endbower -->
@@ -101,6 +118,9 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="views/organization/organization.controller.js"></script>
+        <script src="views/branch/branch.controller.js"></script>
+        <script src="views/profile/profile.controller.js"></script>
+       
         <!-- endbuild -->
 </body>
 </html>
