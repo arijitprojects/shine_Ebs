@@ -1,0 +1,25 @@
+{
+    "status":"200",
+    "districts":
+    [
+        {"District_Code":"327","District_Name":"Darjiling"},
+        {"District_Code":"328","District_Name":"Jalpaiguri"},
+        {"District_Code":"329","District_Name":"Cooch Behar"},
+        {"District_Code":"330","District_Name":"Uttar Dinajpur"},
+        {"District_Code":"331","District_Name":"Dakshin Dinajpur"},
+        {"District_Code":"332","District_Name":"Maldah"},
+        {"District_Code":"333","District_Name":"Murshidabad"},
+        {"District_Code":"334","District_Name":"Birbhum"},
+        {"District_Code":"335","District_Name":"Barddhaman"},
+        {"District_Code":"336","District_Name":"Nadia"},
+        {"District_Code":"337","District_Name":"North Twenty Four Parganas"},
+        {"District_Code":"338","District_Name":"Hoogly"},
+        {"District_Code":"339","District_Name":"Bankura"},
+        {"District_Code":"340","District_Name":"Purulia"},
+        {"District_Code":"341","District_Name":"Howrah"},
+        {"District_Code":"342","District_Name":"Kolkata"},
+        {"District_Code":"343","District_Name":"South Twenty Four Parganas"},
+        {"District_Code":"344","District_Name":"Paschim Medinipur"},
+        {"District_Code":"345","District_Name":"Purba Medinipur"}
+    ]
+}

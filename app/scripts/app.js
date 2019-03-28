@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'angularjs-datetime-picker'
   ])
   .config(function ($locationProvider,$routeProvider) {
     $routeProvider

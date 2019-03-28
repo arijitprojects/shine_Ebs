@@ -3,97 +3,107 @@
 
     angular
         .module('shineEbsApp')
-        .controller('organizationController', ['$scope','$http',function organizationController($scope,$http){
-             //console.log("posting data...." +  JSON.stringify($scope.form) );
-    
-             var url = "http://localhost:8989/A_ezi/organization/states.php";
-             $scope.states = {};
-             $scope.states.statesId = "1";
-             $scope.districts = {};
-             $scope.districts.districtsId = "19";
-             $http({
-               method: 'GET',
-               url: url
-              // headers: {'Content-Type':'application/json'},
-           
-             }).then(function successCallback(responseData) {
-               console.log("  : "+responseData);
+        .controller('organizationController', ['$scope', '$http', 'restApiFactory','$parse','$location',
+        
+        function organizationController($scope, $http, restApiFactory,$parse,$location){
+           $scope.states = {};
+           $scope.states.statesId = "19";
+           $scope.districts = {};
+           $scope.organization = {};
+           $scope.form = {};
+           restApiFactory("GET", "http://localhost:8989/A_ezi/organization/states.php", {}).post(function(responseData){
                if(responseData.status == "200"){
-                $scope.states.sattesList = responseData.data.states;
-
+                    $scope.states.sattesList = responseData.states;
+                    console.log($scope.states.sattesList);
                }
-           
-             }, function errorCallback(responseData) {
-               console.log("unauthorized :  : "+JSON.stringify(responseData));
+           }, function (responseData){
+            console.log("Error :" , responseData);
+           });
 
-               if(responseData.data.status  == 400){
-               
-                   var message =responseData.data.defaultMessage;
-                   console.log("message :  : "+message);
-                   var serverMessage = $parse('organizationForm.'+responseData.data.fieldName+'.$error.serverMessage');
-                   console.log("serverMessage :  : "+serverMessage);
+           restApiFactory("GET", "http://localhost:8989/A_ezi/organization/organizationType.php", {}).post(function(responseData){
+            if(responseData.status == "200"){
+                 $scope.organization.orgList = responseData.org_type;
+                 console.log($scope.organization.orgList);
+            }
+            }, function (responseData){
+            console.log("Error :" , responseData);
+            });
 
-                   $scope.organizationForm.$setValidity(responseData.data.fieldName,false,$scope.organizationForm);
-                   serverMessage.assign($scope,message);
+            $scope.GetSelectedOrganization = function(){
+                console.log("$scope.organization.orgId : ", $scope.organization.orgId);
+            }
+
+            $scope.GetSelectedState = function(){
+                console.log("$scope.states.statesId : ", $scope.states.statesId);
+
+                if($scope.states.statesId){
+                    restApiFactory("POST", "http://localhost:8989/A_ezi/organization/districts.php", JSON.stringify({state_id:$scope.states.statesId})).post(function(responseData){
+                        if(responseData.status == "200"){
+                            $scope.districts.districtId = "327";
+
+                            $scope.districts.districtlist = responseData.districts;
+                            console.log($scope.districts.districtlist);
+                        }
+                        }, function (responseData){
+                        console.log("Error :" , responseData);
+                        });
+                };
+            }
+
+            $scope.GetSelectedDistrict = function(){
+                console.log("$scope.states.districtId :", $scope.districts.districtId);
+            }
+            $scope.submitForm = function(){
+              
+                if(!$scope.form.Org_Name && !$scope.form.Org_ShortCode && !$scope.form.Org_State_Cd
+                    && !$scope.form.Org_District_Cd && !$scope.form.Org_Address1 
+                    && !$scope.form.Org_Address2 && !$scope.form.Org_Address3
+                    && !$scope.form.Org_Pin_No && !$scope.form.Org_Phone_No
+                    && !$scope.form.Org_Email_Id && !$scope.form.Org_RegNo
+                    && !$scope.form.Org_RegDate && !$scope.form.No_Of_Branch
+                    && !$scope.form.OrgApplicationUrl){
+                   
+                }else{
+                    console.log("has value :  : "+JSON.stringify({Org_Name:$scope.form.Org_Name,
+                        Org_ShortCode:"HO",
+                        Org_Type_Id:$scope.organization.orgId,
+                        Org_State_Cd:$scope.states.statesId,
+                        Org_District_Cd: $scope.districts.districtId,
+                        Org_Address1:$scope.form.Org_Address1,
+                        Org_Address2:$scope.form.Org_Address2,
+                        Org_Address3:$scope.form.Org_Address3,
+                        Org_Pin_No:$scope.form.Org_Pin_No,
+                        Org_Phone_No:$scope.form.Org_Phone_No,
+                        Org_Email_Id:$scope.form.Org_Email_Id,
+                        Org_RegNo:$scope.form.Org_RegNo,
+                        Org_RegDate:$scope.form.Org_RegDate,
+                        No_Of_Branch:$scope.form.No_Of_Branch,
+                        OrgApplicationUrl:$scope.form.OrgApplicationUrl }));
+                    restApiFactory("POST", "http://localhost:8989/A_ezi/organization/organizationHO.php", 
+                    JSON.stringify({Org_Name:$scope.form.Org_Name,
+                        Org_ShortCode:"HO",
+                        Org_Type_Id:$scope.organization.orgId,
+                        Org_State_Cd:$scope.states.statesId,
+                        Org_District_Cd: $scope.districts.districtId,
+                        Org_Address1:$scope.form.Org_Address1,
+                        Org_Address2:$scope.form.Org_Address2,
+                        Org_Address3:$scope.form.Org_Address3,
+                        Org_Pin_No:$scope.form.Org_Pin_No,
+                        Org_Phone_No:$scope.form.Org_Phone_No,
+                        Org_Email_Id:$scope.form.Org_Email_Id,
+                        Org_RegNo:$scope.form.Org_RegNo,
+                        Org_RegDate:$scope.form.Org_RegDate,
+                        No_Of_Branch:$scope.form.No_Of_Branch,
+                        OrgApplicationUrl:$scope.form.OrgApplicationUrl })).post(function(responseData){
+                        if(responseData.status == "200"){
+                            $location.path("/branch");
+                        }
+                        }, function (responseData){
+                        console.log("Error :" , responseData);
+                        });
+                }
                 
-               }
-               else{
-                   responseData.data.errors.forEach(function(error){
-                       var message =error.defaultMessage;
-                       var serverMessage = $parse('loginForm.'+error.field+'.$error.serverMessage');
-                       $scope.organizationForm.$setValidity(error.field,false,$scope.organizationForm);
-                       serverMessage.assign($scope,message);
-                      });
-               }
-             });
-
-
-
-
-
-
-
-             console.log("$scope.states.statesId :",JSON.stringify({state_id:$scope.districts.districtsId}));
-
-             $http({
-                method: 'POST',
-                url: "http://localhost:8989/A_ezi/organization/districts.php",
-                headers: {'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'},
-               
-               data: JSON.stringify({state_id:$scope.districts.districtsId})
-              }).then(function successCallback(responseData) {
-                console.log("  : "+responseData);
-                if(responseData.status == "200"){
-                 console.log("responseData.data.districts",JSON.stringify(responseData.data.districts));
-                 $scope.districts.districtList = responseData.data.districts;
-                 console.log(" $scope.districts.districtList ",JSON.stringify( $scope.districts.districtList ));
-                }
-            
-              }, function errorCallback(responseData) {
-                console.log("unauthorized :  : "+JSON.stringify(responseData));
- 
-                if(responseData.data.status  == 400){
-                
-                    var message =responseData.data.defaultMessage;
-                    console.log("message :  : "+message);
-                    var serverMessage = $parse('organizationForm.'+responseData.data.fieldName+'.$error.serverMessage');
-                    console.log("serverMessage :  : "+serverMessage);
- 
-                    $scope.organizationForm.$setValidity(responseData.data.fieldName,false,$scope.organizationForm);
-                    serverMessage.assign($scope,message);
-                 
-                }
-                else{
-                    responseData.data.errors.forEach(function(error){
-                        var message =error.defaultMessage;
-                        var serverMessage = $parse('loginForm.'+error.field+'.$error.serverMessage');
-                        $scope.organizationForm.$setValidity(error.field,false,$scope.organizationForm);
-                        serverMessage.assign($scope,message);
-                       });
-                }
-              });
+            }
 
         }])
-
-
 }());
