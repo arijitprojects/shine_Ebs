@@ -15,22 +15,65 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="bower_components/angularjs-datetime-picker/angularjs-datetime-picker.css">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
     <!-- endbuild -->
   </head>
   <body ng-app="shineEbsApp">
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    
+  <!-- Sidebar  -->
+  <nav id="sidebar">
+    <div id="dismiss">
+        <i class="fa fa-arrow-left"></i>
+    </div>
 
+    <div class="sidebar-header">
+        <h3>EziCBS</h3>
+    </div>
+
+    <ul class="list-unstyled components"> 
+        <li class="active">
+            <a href="\organization">Organisation HO <span class="sr-only">(current)</span></a>
+        </li>
+        <li>
+            <a href="\branch">Organisation Branch</a>
+        </li>
+        <li>
+            <a href="\profile">Employee Profile</a>
+        </li>   
+        <li><a href="#">About</a></li>
+        <li>              
+            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li>
+                        <a href="#">Page 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Page 2</a>
+                    </li>
+                    <li>
+                        <a href="#">Page 3</a>
+                    </li>
+                </ul>
+        </li>          
+        <li>
+            <a href="#">Contact</a>
+        </li>
+    </ul> 
+</nav>
     <!-- Add your site or application content here -->
+<div id="content">
     <header>
       <div class="container-fluid bg-secondary">
         <div class="row">
           <div class="col-md-12">
             <div class="d-flex flex-wrap justify-content-end">
-              <div class="p-2 text-white"><i class="fa fa-phone"></i>&nbsp;8016568259</div>
-              <div class="p-2"><a href="login.html" class="decoration-none text-white">LogIn</a></div>
-              <div class="p-2"><a href="registration.html" class="decoration-none text-white">Registration</a></div>
+              <div class="px-2 py-1 text-white"><small><i class="fa fa-phone"></i>&nbsp;8016568259</small></div>
+              <div class="px-2 py-1"><small><a href="login.html" class="decoration-none text-white">LogIn</a></small></div>
+              <div class="px-2 py-1"><small><a href="registration.html" class="decoration-none text-white">Registration</a></small></div>
             </div>
           </div>
         </div>
@@ -38,6 +81,9 @@
       
       <nav class="navbar navbar-expand-lg navbar-light bg-white shadow">
         <a class="navbar-brand" href="#">EziCBS</a>
+        <button type="button" id="sidebarCollapse" class="btn btn-secondary" style="border-radius:0px !important">
+          <i class="fa fa-align-justify"></i>            
+      </button>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -81,13 +127,15 @@
       </div>
     </div>-->
 
-    <footer class="bg-secondary fixed-bottom">
+    <footer class="bg-secondary">
       <div class="d-flex flex-wrap">
         <div class="p-2 flex-grow-1 text-white">© Copyright EziCBS. All Rights Reserved</div>	  
         <div class="p-2 text-white">from the Yeoman team</div>
       </div>
     </footer>
-
+  </div>
+  <div class="overlay"></div>
+  
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
@@ -114,6 +162,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
     <script>
       function toggleDropdown (e) {
         const _d = $(e.target).closest('.dropdown'),
@@ -133,7 +183,25 @@
       /* not needed, prevents page reload for SO example on menu link clicked */
       $('.dropdown a').on('click tap', e => e.preventDefault())	
       </script>
+      <script type="text/javascript">
+        $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
 
+            $('#dismiss, .overlay').on('click', function () {
+                $('#sidebar').removeClass('active');
+                $('.overlay').removeClass('active');
+            });
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').addClass('active');
+                $('.overlay').addClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+    </script>
 
     <!-- endbower -->
     <!-- endbuild -->
