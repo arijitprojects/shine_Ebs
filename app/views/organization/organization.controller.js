@@ -96,6 +96,7 @@
                         No_Of_Branch:$scope.form.No_Of_Branch,
                         OrgApplicationUrl:$scope.form.OrgApplicationUrl })).post(function(responseData){
                         if(responseData.status == "200"){
+                            alert('Organization setup successfully, click to next page');
                             $location.path("/branch");
                         }
                         }, function (responseData){
