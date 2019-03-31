@@ -42,7 +42,7 @@
             <a href="\branch">Organisation Branch</a>
         </li>
         <li>
-            <a href="\profile">Employee Profile</a>
+            <a href="\createuser">Create user</a>
         </li>   
         <li><a href="#">About</a></li>
         <li>              
@@ -97,7 +97,7 @@
               <a class="nav-link" href="\branch">Organisation Branch</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="\profile">Employee Profile</a>
+              <a class="nav-link" href="\createuser">Create user</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -188,12 +188,10 @@
             $("#sidebar").mCustomScrollbar({
                 theme: "minimal"
             });
-
             $('#dismiss, .overlay').on('click', function () {
                 $('#sidebar').removeClass('active');
                 $('.overlay').removeClass('active');
             });
-
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').addClass('active');
                 $('.overlay').addClass('active');
@@ -212,6 +210,7 @@
         <script src="views/organization/organization.controller.js"></script>
         <script src="views/branch/branch.controller.js"></script>
         <script src="views/profile/profile.controller.js"></script>
+        <script src="views/user/createuser.controller.js"></script>
         <script src="scripts/factories.js"></script>
         <!-- endbuild -->
         <script src="bower_components/angularjs-datetime-picker/angularjs-datetime-picker.js"></script>

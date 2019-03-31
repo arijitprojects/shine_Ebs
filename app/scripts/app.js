@@ -40,6 +40,11 @@ angular
         controller: 'profileController',
         controllerAs: 'profileController'
       })
+      .when('/createuser', {
+        templateUrl: 'views/user/createUser.view.html',
+        controller: 'userCreateController',
+        controllerAs: 'userCreateController'
+      })
       .otherwise({
         redirectTo: '/'
       });

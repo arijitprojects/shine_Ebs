@@ -80,7 +80,7 @@
                                     Br_Opening_Date:$scope.form.Br_Opening_Date,
                                     No_Of_Counter:$scope.form.No_Of_Counter
                                 }));
-                        restApiFactory("POST", "http://localhost:8989/A_ezi/organization/branchInsert.php", 
+                        restApiFactory("POST", "http://localhost:8989/A_ezi/organization/branchinsertT.php", 
                         JSON.stringify({ Org_Id:$scope.organization.orgId,
                             Br_Code:$scope.form.Br_Code,
                             Br_Name:$scope.form.Br_Name,

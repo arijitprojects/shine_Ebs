@@ -1,0 +1,136 @@
+<section>
+	<div class="container py-5">
+		<div class="row justify-content-center">
+			
+			<div class="col-md-10 mb-3 col-12">
+				<div class="p-2 bg-secondary">
+					<h2 class="text-white align-content-start">Create user</h2>
+				</div>				
+			</div>	
+					
+			<div class="col-md-10 col-12">
+				<div class="p-3 border">
+				
+					<form ng-controller="userCreateController" name = "userForm" id="userForm">
+						<div class="form-group row">
+							<div class="col-md-12 col-sm-12 col-12">
+								<div class="partition-bg p-2">
+									<label for="orgCode">Employee Code</label>
+                                    <input type="text" class="form-control"  ng-model="userForm.Emp_cd" id="Emp_cd"
+                                     aria-describedby="StaffCode" placeholder="Enter Employee Code">
+								</div>
+							</div>							
+						</div>
+						<div class="form-group row">
+							<div class="col-md-4 col-sm-4 col-12">
+								<div class="partition-bg p-2">
+									<label for="orgRegdNo">First Name</label>
+                                    <input type="text" class="form-control" ng-model="userForm.Fst_Name" 
+                                    id="Fst_Name" placeholder="Enter First Name">
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-4 col-12">
+								<div class="partition-bg p-2">
+									<label for="orgRegdNo">Middle Name</label>
+									<input type="text" class="form-control" ng-model="userForm.Mdl_Name" 
+                                    id="Mdl_Name"  placeholder="Enter Middle Name">
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-4 col-12">
+								<div class="partition-bg p-2">
+									<label for="orgRegdNo">Last Name</label>
+									<input type="text" class="form-control"  ng-model="userForm.Lst_Name" 
+                                    id="Lst_Name" placeholder="Enter Last Name">
+								</div>
+							</div>							
+						</div>
+						
+						<div class="form-group row">
+							<div class="col-md-6 col-sm-6 col-12">
+								<div class="partition-bg p-2">
+									<label for="orgCode">Email</label>
+                                    <input type="email" class="form-control" id="Usr_Email"
+                                     ng-model="userForm.Usr_Email" placeholder="Enter E-mail Id">
+								</div>
+							</div>	
+							<div class="col-md-6 col-sm-6 col-12">
+								<div class="partition-bg p-2">		
+									<label for="ContactNumber">Contact Number</label>
+                                    <input type="text" class="form-control" ng-model="userForm.Contact_No"
+                                     id="Contact_No" placeholder="Enter Contact Number">
+								</div>
+							</div>						
+						</div>
+						
+                        <div class="form-group row">
+							<div class="col-md-6 col-sm-6 col-12">
+								<div class="partition-bg p-2">
+									<label for="orgCode">User Name</label>
+                                    <input type="text" class="form-control" id="User_Nm" 
+                                    ng-model="userForm.User_Nm"  
+                                    placeholder="Enter User Name">
+								</div>
+							</div>	
+							<div class="col-md-6 col-sm-6 col-12">
+								<div class="partition-bg p-2">		
+									<label for="orgRegdDate">User Password</label>						
+									<input type="password" class="form-control"  id="User_Pwd" 
+                                    ng-model="userForm.User_Pwd" placeholder="Enter Password">
+								</div>
+							</div>						
+						</div>
+
+
+						
+						<div class="form-group row">
+								<div class="col-md-12">
+									<div class="partition-bg p-2">		
+										<label for="OrgType">Select Organization</label>
+										<select id="organization" ng-model="organization.orgId"
+										ng-options="organization.ORG_ID as organization.ORG_NM for organization in organization.orgcodesList"
+										ng-change="GetSelectedOrganization()" class="form-control">
+										<option value="">------------Select Organisation Type------------</option>
+										</select>
+									</div>
+								</div>							
+							</div>	
+                        <div class="form-group row">
+							<div class="col-md-6 col-sm-6 col-12">
+								<div class="partition-bg p-2">
+									<label for="role">Select Role</label>
+                                    <select id="role" ng-model="roles.roleId"
+									ng-options="role.ROLE_ID as role.ROLE_NM for role in roles.roleList"
+									ng-change="GetSelectedrole()" class="form-control">
+									<option value="">------------Select Role------------</option>		
+								</select>
+								</div>
+							</div>	
+							<div class="col-md-6 col-sm-6 col-12">
+								<div class="partition-bg p-2">		
+									<label for="branch">Select Branch</label>						
+                                    <select id="branch" ng-model="branch.branchId"
+									ng-options="branch.BR_ID as branch.BR_NM for branch in branch.orgcodes"
+									ng-change="GetSelectedBranch()" class="form-control">
+									<option value="">------------Select Branch------------</option>				
+								</select>
+								</div>
+							</div>						
+						</div>
+						
+						
+						
+						<div class="form-group row justify-content-end mb-0">
+							<div class="col-md-6">
+								<!--<button type="button" class="btn btn-secondary px-4">Save</button>-->						
+								<button type="reset" value="Reset" class="btn btn-secondary px-4">Reset</button>
+								<button type="submit" ng-click="submitForm()" class="btn btn-secondary px-4">Submit</button>  						
+							</div>
+						</div>
+					</form>
+					
+				</div>
+			</div>
+			
+		</div>		
+	</div>
+</section>
