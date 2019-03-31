@@ -1,0 +1,59 @@
+<div class="banner partition-bg">  
+    <div class="centered">
+        <h1 class="text-center">Login / Register</h1>
+         <h5 class="text-center">Home Login/Register</h5>
+    </div>  
+</div>
+<section>
+	<div class="container py-5 ctn-bot-75">	
+		
+		<div class="row justify-content-center">
+			<div class="col-md-10">
+			<div class="row bg-white shadow">
+			<div class="col-md-6 form-left-bg primary-bg">
+				<div class="" style="height: 100%; width: 100%; position: relative">
+					<div class="centered" style="width: 100%;">
+						<h2 class="text-center text-white">New to our website?</h2>
+						<p class="text-center text-white">There are advances being made in science and technology everyday, and a good example of this is the</p>
+						<a href="registration.html" class="btn create-acc text-white" >Create An Account</a>
+					</div> 
+				</div>
+			</div>
+			<div class="col-md-6 p-3">
+				<div class="p-3">
+				<h3 class="text-center mb-3">LOG IN TO ENTER</h3>
+				<form ng-controller="loginController" name = "loginForm" id="loginForm">
+					<div class="input-group form-group">						
+						<input type="text" class="form-control border-0 border-btm" 
+						ng-model="loginForm.username" placeholder="Username" required>						
+					</div>
+					<div class="input-group form-group">						
+						<input type="password" class="form-control border-0 border-btm"
+						ng-model="loginForm.password" placeholder="Password" required>
+					</div>
+					<div class="form-group form-check">
+						<input type="checkbox" class="form-check-input" id="exampleCheck1">
+						<label class="form-check-label" for="exampleCheck1">Keep me logged in</label>
+					</div>
+					<div class="form-group" style="display: grid;">
+						<button type="submit" ng-click="submitForm()" class="btn btn-secondary px-4">Submit</button>  						
+						<!-- <a href="#" class="decoration-none text-center text-secondary">Forgot your password?</a>						 -->
+					</div>
+				</form>
+				</div>
+				
+				<!--<div class="p-3 acc-footer">
+					<div class="d-flex justify-content-center links">
+						Don't have an account?&nbsp;<a href="registration.html" class="decoration-none">Register</a>
+					</div>
+					<div class="d-flex justify-content-center">
+						<a href="#" class="decoration-none">Forgot your password?</a>
+					</div>
+				</div>-->
+			</div>
+			</div>
+			</div>			
+		</div>	
+			
+	</div>
+</section>

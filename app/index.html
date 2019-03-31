@@ -74,6 +74,7 @@
               <div class="px-2 py-1 text-white"><small><i class="fa fa-phone"></i>&nbsp;8016568259</small></div>
               <div class="px-2 py-1"><small><a href="/login" class="decoration-none text-white">LogIn</a></small></div>
               <div class="px-2 py-1"><small><a href="registration.html" class="decoration-none text-white">Registration</a></small></div>
+              <div class="px-2 py-1 text-white loged-user"><small> Hi! </small></div>
             </div>
           </div>
         </div>
@@ -117,7 +118,7 @@
       </nav>
     </header>
 
-    <div class="container">
+    <div class="">
     <div ng-view=""></div>
     </div>
 
@@ -213,6 +214,7 @@
         <script src="views/user/createuser.controller.js"></script>
         <script src="views/login/login.controller.js"></script>
         <script src="scripts/factories.js"></script>
+        <script src="scripts/authentication.service.js"></script>
         <!-- endbuild -->
         <script src="bower_components/angularjs-datetime-picker/angularjs-datetime-picker.js"></script>
         
