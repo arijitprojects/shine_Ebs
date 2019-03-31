@@ -45,6 +45,11 @@ angular
         controller: 'userCreateController',
         controllerAs: 'userCreateController'
       })
+      .when('/login', {
+        templateUrl: 'views/login/login.view.html',
+        controller: 'loginController',
+        controllerAs: 'loginController'
+      })
       .otherwise({
         redirectTo: '/'
       });
