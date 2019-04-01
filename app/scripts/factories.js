@@ -52,8 +52,9 @@
                     $http({
                         method:method,
                         url:url,
-                            headers:{'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'},
-                            data:inputObj
+                        headers:{'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'},
+                       // headers:{'Content-Type' : 'application/json'},
+                        data:inputObj
                     }).then(function successBlock(responseData){
                         successCallback(responseData.data);
                     }, function errorBlock(responseData){

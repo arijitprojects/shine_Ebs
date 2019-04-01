@@ -10,7 +10,7 @@
             $scope.districts = {};
             $scope.gp = {};
 
-            restApiFactory("GET", "http://localhost:8989/A_ezi/organization/organizationType.php", {}).post(function(responseData){
+            restApiFactory("GET", "http://localhost:8989/A_ezi/organization/organizationName.php", {}).post(function(responseData){
                 if(responseData.status == "200"){
                      $scope.organization.orgList = responseData.org_type;
                      console.log($scope.organization.orgList);

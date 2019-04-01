@@ -57,7 +57,7 @@
               
                 if(!$scope.form.Org_Name && !$scope.form.Org_ShortCode && !$scope.form.Org_State_Cd
                     && !$scope.form.Org_District_Cd && !$scope.form.Org_Address1 
-                    && !$scope.form.Org_Address2 && !$scope.form.Org_Address3
+                    
                     && !$scope.form.Org_Pin_No && !$scope.form.Org_Phone_No
                     && !$scope.form.Org_Email_Id && !$scope.form.Org_RegNo
                     && !$scope.form.Org_RegDate && !$scope.form.No_Of_Branch

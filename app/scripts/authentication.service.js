@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-        .module('onlineMockTestApp')
+        .module('shineEbsApp')
         .factory('AuthenticationService', AuthenticationService);
 
     AuthenticationService.$inject = ['$http', '$cookies', '$rootScope', '$timeout'];

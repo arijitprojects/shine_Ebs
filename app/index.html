@@ -70,11 +70,12 @@
       <div class="container-fluid bg-secondary">
         <div class="row">
           <div class="col-md-12">
-            <div class="d-flex flex-wrap justify-content-end">
+            <div class="d-flex flex-wrap justify-content-end" ng-switch on="globals.currentUser.authdata.authToken == undefined">
+              
               <div class="px-2 py-1 text-white"><small><i class="fa fa-phone"></i>&nbsp;8016568259</small></div>
-              <div class="px-2 py-1"><small><a href="/login" class="decoration-none text-white">LogIn</a></small></div>
-              <div class="px-2 py-1"><small><a href="registration.html" class="decoration-none text-white">Registration</a></small></div>
-              <div class="px-2 py-1 text-white loged-user"><small> Hi! </small></div>
+              <div class="px-2 py-1"  ng-switch-default><small><a href="/login" class="decoration-none text-white">LogIn</a></small></div>
+              <!-- <div class="px-2 py-1"><small><a href="registration.html" class="decoration-none text-white">Registration</a></small></div> -->
+              <div class="px-2 py-1 text-white loged-user"  ng-switch-when="false"><small> Hi! {{globals.currentUser.authdata.username}} </small></div>
             </div>
           </div>
         </div>
