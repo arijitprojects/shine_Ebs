@@ -1,0 +1,431 @@
+
+<section>
+	<div class="container py-5">
+		<div class="row justify-content-center">
+			
+			<div class="col-md-10 mb-3 col-12">
+				<div class="p-2 bg-secondary">
+					<h2 class="text-white align-content-start">KYC FOR INDIVIDUALS</h2>
+				</div>				
+			</div>	
+					
+			<div class="col-md-10 col-12">
+				<div class="p-3 border mb-5">
+				
+					<form ng-controller="kycindividualController" name = "kycindividualForm" id="kycindividualForm" >
+						<div class="form-group row">
+							<div class="col-md-12 col-sm-6 col-12">
+								<div class="partition-bg p-2">
+									<label for="branchCode">Form No</label>
+									<input type="text" class="form-control" id="FormNo" placeholder="Form No">
+                                </div>
+                                <div class="partition-bg p-2">
+                                        <label for="customerstatusid">Customer Status</label>
+                                        <select id="customerstatusid" ng-model="customerstatusid.customerstatusidId"
+                                        ng-options="customerstatusid.ID as customerstatusid.DESC for customerstatusid in customerstatusid.customerstatusidlist"
+                                        ng-change="GetSelectedCustomerstatusid()" class="form-control">
+                                        <option value="">Select Customer Status</option>
+                                        </select>                                 
+                                        </div>
+
+							</div>							
+						</div>
+						<h5>A. Identity Details</h5>
+						<div class="form-group row">
+							<div class="col-md-12 col-sm-4 col-12">
+							    <div class="partition-bg p-2">
+                                    <label for="appname">Name of Applicant</label>
+                                    <div class="f-col-4">
+								
+									<select id="salutation" class="form-control col-md-3 col-12"  ng-model="salutations.salutationId"
+									ng-options="salutation.ID as salutation.DESC for salutation in salutations.salutationlist"
+                                    ng-change="GetSelectedSalutation()" 	class="form-control">
+									<option value="">Select Salutation</option>
+									</select>
+									<input type="text" class="form-control col-md-3 col-12" id="orgRegdNo" placeholder="Enter First Name">
+									<input type="text" class="form-control col-md-3 col-12" id="orgRegdNo" placeholder="Enter Middle Name">
+                                    <input type="text" class="form-control col-md-3 col-12" id="orgRegdNo" placeholder="Enter Last Name">
+                                    </div>
+								</div>
+							</div>													
+						</div>
+						<div class="form-group row">
+							<div class="col-md-4 col-sm-4 col-12">
+								<div class="partition-bg p-2">
+									<label for="orgRegdNo">Father’s/ Spouse Name</label>
+									<input type="text" class="form-control" id="fname" placeholder="Father’s/ Spouse Name">
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-4 col-12">
+								<div class="partition-bg p-2">
+									
+                                    <label for="relationship">Relationship</label>
+									<select id="relationship" ng-model="relationships.relationshipId"
+									ng-options="relationship.ID as relationship.DESC for relationship in relationships.relationshiplist"
+                                    ng-change="GetSelectedRelationship()" 	class="form-control">
+									<option value="">Select Relationship</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-4 col-12">
+								<div class="partition-bg p-2">
+									<label for="orgRegdNo">Mother’s Maiden Name</label>
+									<input type="text" class="form-control" id="mname" placeholder="Mother’s Maiden Name">
+								</div>
+							</div>							
+                        </div>
+
+                        <div class="form-group row">
+							<div class="col-md-4 col-sm-4 col-12">
+								<div class="partition-bg p-2">
+									<label for="dob">Date of Birth</label>
+									<!-- <input datetime-picker class="form-control" id="dob" placeholder="Enter Date or Birth"> -->
+                                    <input datetime-picker class="form-control" id="kycindividualForm.Br_Opening_Date" ng-model="kycindividualForm.Br_Opening_Date" placeholder="Enter Date Of Birth">
+                                </div>
+							</div>
+							<div class="col-md-4 col-sm-4 col-12">
+								<div class="partition-bg p-2">
+									
+                                    <label for="gender">Gender</label>
+									<select id="gender" ng-model="genders.genderId"
+									ng-options="gender.ID as gender.DESC for gender in genders.genderlist"
+                                    ng-change="GetSelectedGender()" 	class="form-control">
+									<option value="">Select Gender</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-4 col-12">
+								<div class="partition-bg p-2">
+									
+                                    <label for="maritalStatus">Marital Status</label>
+									<select id="maritalStatus" ng-model="maritalStatus.mstatusId"
+									ng-options="maritalStatus.ID as maritalStatus.DESC for maritalStatus in maritalStatus.maritalStatuslist"
+                                    ng-change="GetSelectedmaritalStatus()" 	class="form-control">
+									<option value="">Select Marital Status</option>
+									</select>
+								</div>
+							</div>							
+                        </div>
+                        
+                        <div class="form-group row">
+							<div class="col-md-4 col-sm-4 col-12">
+								<div class="partition-bg p-2">
+									
+                                    <label for="religion">Religion</label>
+									<select id="religion" ng-model="religions.religionId"
+									ng-options="religion.ID as religion.DESC for religion in religions.religionlist"
+                                    ng-change="GetSelectedReligion()" 	class="form-control">
+									<option value="">Select Religion</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-4 col-12">
+								<div class="partition-bg p-2">
+								
+                                    <label for="caste">Caste</label>
+									<select id="caste" ng-model="caste.casteId"
+									ng-options="caste.ID as caste.DESC for caste in castes.castelist"
+                                    ng-change="GetSelectedCaste()" 	class="form-control">
+									<option value="">Select Caste</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-4 col-12">
+								<div class="partition-bg p-2">
+									
+                                    <label for="bgroup">Blood Group</label>
+									<select id="bgroup" ng-model="bgroup.bgroupId"
+									ng-options="bgroup.ID as bgroup.DESC for bgroup in bgroup.bgrouplist"
+                                    ng-change="GetSelectedbgroup()" 	class="form-control">
+									<option value="">Select Blood Group</option>
+                                    </select>
+                                    
+								</div>
+							</div>							
+                        </div>
+                        <div class="form-group row">
+                                <div class="col-md-6 col-sm-6 col-12">
+                                    <div class="partition-bg p-2">
+                                        <div class="f-col-2">                                            
+                                            <div class="form-group form-check mb-0 mt-4 r-pan-top">
+                                                <input type="checkbox" class="form-check-input" id="havepan" ng-model="havepan" name="havepan">
+                                                <label class="form-check-label" for="havepan">Have PAN?</label>                                                
+                                            </div>
+                                            <div class="form-group mb-0 ml-auto">
+                                                <label for="panno">PAN No.</label>
+                                                <input type="text" class="form-control mt-0" id="panno" ng-disabled="!havepan" name="panno" placeholder="Enter PAN No." style="max-width:100%" disabled="disabled">
+                                            </div>                                                                                    
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-12">
+                                    <div class="partition-bg p-2">
+                                        <label for="pidentity">UID/Aadhaar No.</label>
+                                        <input type="text" class="form-control" id="aadhaar" placeholder="UID/Aadhaar No.">      
+                                    </div>
+                                </div>
+                        </div>
+
+                        <div class="form-group row">
+                                <div class="col-md-6 col-sm-6 col-12">
+                                    <div class="partition-bg p-2">
+                                        <div class="form-group form-check">
+                                            <input type="checkbox" class="form-check-input" id="isminor"   ng-model="isminor" name="isminor">
+                                            <label class="form-check-label" for="isminor">Is Minor</label>                                                
+                                        </div>
+                                        <div class="f-col-2">
+                                            <div class="form-group mb-0 m-rt-15">
+                                                <label for="gucifno">Guardian CIF No.</label>
+                                                <input type="text" class="form-control mt-0" id="gucifno" name="gucifno" ng-disabled="!isminor"  placeholder="Enter Guardian CIF No." style="max-width:100%" disabled="disabled">
+                                            </div>  
+                                            <div class="form-group mb-0 ml-auto">
+                                                <!-- <label for="mrelation">Relationship</label>
+                                                <select class="form-control" id="mrelation" name="mrelation" style="max-width:100%" ng-disabled="!isminor" >	
+                                                        <option value="">------Relation-----</option>
+                                                        <option value="Identity 1">Father</option>
+                                                        <option value="Identity 2">Mother</option>
+                                                        <option value="Identity 3">Other</option>                                                                                                                          									
+                                                </select> -->
+                                                <label for="relationship2">Relationship</label>
+                                                <select id="relationship2" ng-model="relationships2.relationshipId" ng-disabled="!isminor"
+                                                ng-options="relationship2.ID as relationship2.DESC for relationship2 in relationships2.relationshiplist"
+                                                ng-change="GetSelectedRelationship2()" 	class="form-control">
+                                                <option value="">Select Relationship</option>
+                                                </select>
+                                            </div>                                                                                  
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-12">
+                                        <div class="partition-bg p-2">
+                                            <div class="form-group form-check section-ht">
+                                                <input type="checkbox" class="form-check-input" id="isLunatic" name="isLunatic">
+                                                <label class="form-check-label" for="isLunatic">Is Lunatic</label>                                                
+                                            </div>
+                                            <!--<div class="f-col-2">
+                                                <div class="form-group mb-0 m-rt-15">
+                                                        <label for="idmark">ID Marks</label>						
+                                                        <input type="text" class="form-control" id="idmark" name="idmark" placeholder="Enter Identification Mark" style="max-width:100%" disabled="disabled">
+                                                </div>  
+                                                <div class="form-group mb-0 ml-auto">
+                                                        <label for="pidentity">Proof of Identity</label>
+                                                        <select class="form-control" id="pidentity" name="pidentity" style="max-width:100%" disabled="disabled">	
+                                                                <option value="">------Proof of Identity-----</option>
+                                                                <option value="Identity 1">Identity 1</option>
+                                                                <option value="Identity 2">Identity 2</option>
+                                                                <option value="Identity 3">Identity 3</option>
+                                                                <option value="Identity 4">Identity 4</option>                                                                   									
+                                                        </select>
+                                                </div>                                                                                  
+                                            </div>-->
+                                        </div>
+                                </div>
+                        </div>
+
+                        <div class="form-group row">
+                                <div class="col-md-6 col-sm-6 col-12">
+                                    <div class="partition-bg p-2">		
+                                        <label for="idmark">ID Marks</label>						
+                                        <input type="text" class="form-control" id="idmark" placeholder="Enter Identification Mark">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-12">
+                                    <div class="partition-bg p-2">
+                                      	
+                                        <label for="pidentity">Proof of Identity</label>
+                                        <select id="pidentity" ng-model="pidentity.pidentityId"
+                                        ng-options="pidentity.ID as pidentity.DESC for pidentity in pidentity.pidentitylist"
+                                        ng-change="GetSelectedIdentity()" 	class="form-control">
+                                        <option value="">Select Proof of Identity</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                        </div>
+
+                        <h5>B. Address Details</h5>  
+						<div class="form-group row">
+							<div class="col-md-12 mb-2">
+								<div class="partition-bg p-2">
+									<label for="address">Address for Correspondence</label>
+									<div class="f-col-3 mb-2">                                            
+                                        <input type="text" class="form-control col-md-4 col-12" id="address1" placeholder="Enter add1">
+                                        <input type="text" class="form-control col-md-4 col-12" id="address2" placeholder="Enter add2">
+                                        <input type="text" class="form-control col-md-4 col-12" id="address3" placeholder="Enter add3">
+                                    </div>
+                                    <div class="f-col-3 mb-2">
+                                           
+                                            <select id="district" ng-model="district.districtId"
+                                            ng-options="district.ID as district.DESC for district in district.districtlist"
+                                            ng-change="GetSelectedDistrict()" 	class="form-control">
+                                            <option value="">Select District</option>
+                                            </select>
+                                            <select id="block" ng-model="block.blockId"
+                                            ng-options="block.ID as block.DESC for block in block.blocklist"
+                                            ng-change="GetSelectedBlock()" 	class="form-control">
+                                            <option value="">Select Block</option>
+                                            </select>
+    
+                                            <select id="gp" ng-model="gp.gpId"
+                                            ng-options="gp.ID as gp.DESC for gp in gp.gplist"
+                                            ng-change="GetSelectedGP()" 	class="form-control">
+                                            <option value="">Select GP</option>
+                                            </select>
+                                    </div>
+                                    <div class="f-col-3">
+                                            
+                                            <select id="village" ng-model="village.villageId"
+                                            ng-options="village.ID as village.DESC for village in village.villagelist"
+                                            ng-change="GetSelectedVillage()" 	class="form-control">
+                                            <option value="">Select Village</option>
+                                            </select>
+                                            <input type="text" class="form-control col-md-4 col-12" id="pin" placeholder="Enter Pin">                                            
+                                            <input type="text" class="form-control col-md-4 col-12" id="landmark" placeholder="Enter Landmark">
+                                    </div>
+								</div>
+							</div>									
+						</div>
+                        
+                        <div class="form-group row">
+                                <div class="col-md-4 col-sm-6 col-12">
+                                    <div class="partition-bg p-2">		
+                                        <label for="livingsince">Living Since (Years)</label>						
+                                        <input type="number" class="form-control" id="livingsince" placeholder="Enter Living Since">
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-sm-6 col-12">
+                                    <div class="partition-bg p-2">
+                                        <label for="ContactNumber">Contact Details</label>
+                                        <div class="f-col-2-sub">
+                                        <input type="tel" class="form-control" id="ContactNumber" placeholder="Enter Mobile no" minlength="10" maxlength="10">
+                                        <input type="email" class="form-control" id="ContactEmail" placeholder="Enter Email">
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                                <div class="col-md-12 col-sm-6 col-12">
+                                    <div class="partition-bg p-2">		
+                                        <label for="livingsince">Proof of Address</label>
+                                        <div class="f-col-2 mb-2">			
+                                                <select id="addressType" ng-model="addressType.addressTypeId"
+                                                ng-options="addressType.ID as addressType.DESC for addressType in addressType.addressTypelist"
+                                                ng-change="GetSelectedaddressType()" 	class="form-control">
+                                                <option value="">Select Address Type</option>
+                                                </select>
+        
+                                                <select id="addressDocument" ng-model="addressDocument.addressDocumentId"
+                                                ng-options="addressDocument.ID as addressDocument.DESC for addressDocument in addressDocument.addressDocumentlist"
+                                                ng-change="GetSelectedaddressDocument()" 	class="form-control">
+                                                <option value="">Select Address Document</option>
+                                                </select>
+                                        </div>
+
+                                        <div class="f-col-2 mb-2">			
+                                            <select id="addressType2" ng-model="addressType2.addressTypeId"
+                                            ng-options="addressType2.ID as addressType2.DESC for addressType2 in addressType2.addressTypelist"
+                                            ng-change="GetSelectedaddressType2()" 	class="form-control">
+                                            <option value="">Select Address Type2</option>
+                                            </select>
+    
+                                            <select id="addressDocument2" ng-model="addressDocument2.addressDocumentId"
+                                            ng-options="addressDocument2.ID as addressDocument2.DESC for addressDocument2 in addressDocument2.addressDocumentlist"
+                                            ng-change="GetSelectedaddressDocument2()" 	class="form-control">
+                                            <option value="">Select Address Document2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>                                
+                        </div>
+                        
+                        <h5>C. Other Details</h5>
+
+                        <div class="form-group row">
+
+
+                                <div class="col-md-6 col-sm-6 col-12">
+                                        <div class="partition-bg p-2">		
+                                            <label for="gannualinc">Income Type</label>						
+                                            <select id="incometype" ng-model="incometype.incometypeId"
+                                            ng-options="incometype.ID as incometype.DESC for incometype in incometype.incometypelist"
+                                            ng-change="GetSelectedIncometype()" class="form-control">
+                                            <option value="">Select Income Type</option>
+                                            </select>                                        </div>
+                                    </div>
+
+                            <div class="col-md-6 col-sm-6 col-12">
+                                <div class="partition-bg p-2">		
+                                    <label for="gannualinc">Gross Annual Income</label>						
+                                    <input type="number" class="form-control" id="gannualinc" placeholder="Enter Gross Annual Income">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-12">
+                                <div class="partition-bg p-2">	
+                                        <label for="networth">Net Worth</label>
+                                        <input type="number" class="form-control" id="networth" placeholder="Enter Net Worth">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-12">
+                                    <div class="partition-bg p-2">	
+                                            <label for="assondate">As On Date</label>
+                                            <!-- <input datetime-picker class="form-control" id="orgRegdDate" placeholder="As On Date"> -->
+                                            <input datetime-picker class="form-control" id="kycindividualForm.Br_Opening_Date" ng-model="kycindividualForm.as_on_date" placeholder="As On Date">
+
+                                        </div>
+                                </div>
+
+
+                             
+
+
+                        </div>
+
+                        <div class="form-group row">
+                                <div class="col-md-4 col-sm-6 col-12">
+                                    <div class="partition-bg p-2">		
+                                       
+                                        <label for="qualification">Educational Qualification</label>
+                                        <select id="qualification" ng-model="qualification.qualificationId"
+                                        ng-options="qualification.ID as qualification.DESC for qualification in qualification.qualificationtlist"
+                                        ng-change="GetSelectedQualification()" 	class="form-control">
+                                        <option value="">Select Qualification</option>
+                                        </select>
+
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-12">
+                                    <div class="partition-bg p-2">
+                                        
+                                        <label for="occupation">Occupation</label>
+                                        <select id="occupation" ng-model="occupation.occupationId"
+                                        ng-options="occupation.ID as occupation.DESC for occupation in occupation.occupationlist"
+                                        ng-change="GetSelectedOccupation()" 	class="form-control">
+                                        <option value="">Select Occupation</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-12">
+                                        <div class="partition-bg p-2">
+                                            <label for="otherinfo">Any other information</label>
+                                            <input type="text" class="form-control" id="otherinfo"  placeholder="Any other information">
+                                        </div>
+                                </div>
+                        </div>
+						
+						<div class="form-group row justify-content-end mb-0">
+							<div class="col-md-3">													
+								<button type="reset" value="Reset" class="btn btn-secondary px-4">Reset</button>
+								<button type="submit" ng-click="submitForm()" class="btn btn-secondary px-4">Submit</button>  						
+							</div>
+						</div>
+					</form>
+					
+				</div>
+			</div>
+			
+		</div>		
+	</div>
+</section>

@@ -1,0 +1,114 @@
+
+<section>
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                
+                <div class="col-md-10 mb-3 col-12">
+                    <div class="p-2 bg-secondary">
+                        <h3 class="text-white align-content-start mb-0">SHARE ISSUE TO MEMBERS</h3>
+                    </div>				
+                </div>	
+                        
+                <div class="col-md-10 col-12">
+                    <div class="p-3 border mb-5">				
+                        <form ng-controller="shareissueController" name = "shareissueForm" id="shareissueForm">	
+                            <div class="form-group row">
+                                    <div class="col-md-6 col-sm-6 col-12">
+                                        <div class="partition-bg p-2">		
+                                            <label for="cifno">Membership No./CIF No.</label>						
+                                            <input type="text" class="form-control" id="cifno" placeholder="Enter Membership No./CIF No.">
+                                            <a href="#" class="disreport">Display Individuals Details (View)</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-12">
+                                        <div class="partition-bg p-2" style="height: 100px;">		
+                                            <label for="addmissionf">No of Share Issue</label>						
+                                            <input type="number" class="form-control" id="addmissionf" ng-model="" placeholder="Enter Admission Fees" required>
+                                        </div>
+                                    </div>                                
+                            </div>
+    
+                            <div class="form-group row">                            
+                                <div class="col-md-12 col-sm-4 col-12">
+                                    <div class="partition-bg p-2">	
+                                        <label for="priceps">Share Allotment No</label>	
+                                        <div class="f-col-2">
+                                            <div class="form-group mb-0 m-rt-15  col-md-6 col-12" style="padding: 0;padding-right: 15px;">
+                                                <label for="gucifno">From</label>
+                                                <input type="text" class="form-control mt-0 col-md-6 col-12" id="gucifno" name="gucifno" placeholder="" style="max-width:100%">
+                                            </div>  
+                                            <div class="form-group mb-0 col-md-6 col-12" style="padding: 0;padding-right: 15px;">
+                                                <label for="gucifno">To</label>
+                                                <input type="text" class="form-control mt-0 col-md-6 col-12" id="gucifno" name="gucifno" placeholder="" style="max-width:100%">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                                 
+                            </div>
+
+                            <div class="form-group row">                            
+                                <div class="col-md-6 col-sm-4 col-12">
+                                    <div class="partition-bg p-2">		
+                                        <label for="priceps">Price Per Shar</label>						
+                                        <input type="number" class="form-control" id="priceps" ng-model="" placeholder="" required>
+                                    </div>
+                                </div> 
+                                <div class="col-md-6 col-sm-4 col-12">
+                                    <div class="partition-bg p-2">		
+                                        <label for="priceps">Total Amount of Share Issued</label>						
+                                        <input type="number" class="form-control" id="priceps" ng-model="" placeholder="" required>
+                                    </div>
+                                </div>
+                            </div> 
+                            
+                            <div class="form-group row justify-content-end mb-0">
+                                <div class="col-md-3">													
+                                    <button type="reset" value="Reset" class="btn btn-secondary px-4">Reset</button>
+                                    <button type="submit" ng-click="submitForm()" class="btn btn-secondary px-4">Submit</button>  						
+                                </div>
+                            </div>
+                        </form>					
+                    </div>
+                    <div class="p-3 border mb-5">
+                        <div class="table-responsive">
+                            <!--<table class="table table-striped table-hover">
+                                <thead class="bg-secondary text-white">
+                                <tr>
+                                    <th scope="col">Sl No</th>
+                                    <th scope="col">Name of the Individuals</th>
+                                    <th scope="col">CIF No</th>
+                                    <th scope="col">Designation</th>
+                                    <th scope="col">Joining Date</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                    <td>5/4/19</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                    <td>5/4/19</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>@twitter</td>
+                                    <td>5/4/19</td>
+                                </tr>
+                                </tbody>
+                            </table>-->
+                        </div>
+                    </div>
+                </div>
+                
+            </div>		
+        </div>
+    </section>

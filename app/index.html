@@ -18,6 +18,7 @@
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
     <!-- endbuild -->
+
   </head>
   <body ng-app="shineEbsApp">
     <!--[if lte IE 8]>
@@ -43,50 +44,70 @@
         </li>
         <li>
             <a href="\createuser">Create user</a>
-        </li>   
-        <li><a href="#">About</a></li>
+        </li> 
+        <li>
+          <a href="\kycindividual">KYC Individuals</a>
+        </li> 
+        <li>
+          <a href="\kycnonindividual">KYC Non-Individuals</a>
+        </li>  
+        <li>
+          <a href="\customermap">Customer Mapping</a>
+        </li>
+        <li>
+          <a href="\membership">Membership Entry</a>
+        </li>       
         <li>              
-            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Share</a>
                 <ul class="collapse list-unstyled" id="pageSubmenu">
                     <li>
-                        <a href="#">Page 1</a>
+                        <a href="\sharemaster">SHARE MASTER INDEX</a>
                     </li>
                     <li>
-                        <a href="#">Page 2</a>
+                        <a href="\shareaccount">SHARE ACCOUNT OPENING</a>
                     </li>
                     <li>
-                        <a href="#">Page 3</a>
+                        <a href="\shareissue">SHARE ISSUE TO MEMBERS</a>
                     </li>
                 </ul>
-        </li>          
+        </li> 
         <li>
-            <a href="#">Contact</a>
+          <a href="\voucher">Voucher Panel</a>
         </li>
+        <li><a href="#">About</a></li>         
+        <li><a href="#">Contact</a></li>
     </ul> 
 </nav>
     <!-- Add your site or application content here -->
 <div id="content">
     <header>
-      <div class="container-fluid bg-secondary">
+      <!--<div class="container-fluid bg-secondary">
         <div class="row">
           <div class="col-md-12">
             <div class="d-flex flex-wrap justify-content-end" ng-switch on="globals.currentUser.authdata.authToken == undefined">
               
               <div class="px-2 py-1 text-white"><small><i class="fa fa-phone"></i>&nbsp;8016568259</small></div>
               <div class="px-2 py-1"  ng-switch-default><small><a href="/login" class="decoration-none text-white">LogIn</a></small></div>
-              <!-- <div class="px-2 py-1"><small><a href="registration.html" class="decoration-none text-white">Registration</a></small></div> -->
+              <div class="px-2 py-1"><small><a href="registration.html" class="decoration-none text-white">Registration</a></small></div>
               <div class="px-2 py-1 text-white loged-user"  ng-switch-when="false"><small> Hi! {{globals.currentUser.authdata.username}} </small></div>
             </div>
           </div>
         </div>
-      </div>
+      </div>-->
       
-      <nav class="navbar navbar-expand-lg navbar-light bg-white shadow">
-        <a class="navbar-brand" href="#">EziCBS</a>
-        <button type="button" id="sidebarCollapse" class="btn btn-secondary" style="border-radius:0px !important">
+      <nav class="navbar navbar-expand-lg navbar-light bg-secondary shadow">
+        <a class="navbar-brand text-white" href="#">EziCBS</a>
+        <button type="button" id="sidebarCollapse" class="btn btn-light" style="border-radius:0px !important">
           <i class="fa fa-align-justify"></i>            
-      </button>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        </button>
+
+        <div class="ml-auto d-flex flex-wrap justify-content-end" ng-switch on="globals.currentUser.authdata.authToken == undefined">              
+          <div class="px-2 py-1 text-white"><small>Current LogedIn DateTime</small></div>
+          <div class="px-2 py-1"  ng-switch-default><small><a href="/login" class="decoration-none text-dark btn btn-light px-3 py-1">LogIn</a></small></div>         
+          <div class="px-2 py-1 text-white loged-user"  ng-switch-when="false"><small> Hi! {{globals.currentUser.authdata.username}} </small></div>
+        </div>
+        
+        <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
       
@@ -115,7 +136,8 @@
               <a class="nav-link" href="#">Something</a>
             </li>     
           </ul>    
-        </div>
+        </div>-->
+
       </nav>
     </header>
 
@@ -202,6 +224,54 @@
             });
         });
     </script>
+    
+    <script type="text/javascript">
+      $(function () {
+          $("#havepan").click(function () {
+              if ($(this).is(":checked")) {
+                  $("#panno").removeAttr("disabled");
+                  $("#panno").focus();
+              } else {
+                  $("#panno").attr("disabled", "disabled");
+              }
+          });
+          $("#isminor").click(function () {
+              if ($(this).is(":checked")) {
+                  $("#gucifno").removeAttr("disabled");
+                  $("#gucifno").focus();
+                  $("#mrelation").removeAttr("disabled");
+                  $("#mrelation").focus();
+              } else {
+                  $("#gucifno").attr("disabled", "disabled");
+                  $("#mrelation").attr("disabled", "disabled");
+              }
+          });
+          /*$("#isLunatic").click(function () {
+              if ($(this).is(":checked")) {
+                  $("#idmark").removeAttr("disabled");
+                  $("#idmark").focus();
+                  $("#pidentity").removeAttr("disabled");
+                  $("#pidentity").focus();
+              } else {
+                  $("#idmark").attr("disabled", "disabled");
+                  $("#pidentity").attr("disabled", "disabled");
+              }
+          });*/
+          
+      });
+    </script>
+    <script>
+    $(document).ready(function () {
+        $('#yescif').click(function () {
+            $('#snominee2').hide('fast');
+            $('#snominee1').show('fast');
+        });
+        $('#nocif').click(function () {
+            $('#snominee1').hide('fast');
+            $('#snominee2').show('fast');
+        });
+    });
+    </script>
 
     <!-- endbower -->
     <!-- endbuild -->
@@ -214,6 +284,14 @@
         <script src="views/profile/profile.controller.js"></script>
         <script src="views/user/createuser.controller.js"></script>
         <script src="views/login/login.controller.js"></script>
+        <script src="views/kycindividual/kycindividual.controller.js"></script>
+        <script src="views/kycnonindividual/kycnonindividual.controller.js"></script>
+        <script src="views/customermap/customermap.controller.js"></script>
+        <script src="views/membership/membership.controller.js"></script>
+        <script src="views/sharemaster/sharemaster.controller.js"></script>
+        <script src="views/shareaccount/shareaccount.controller.js"></script>
+        <script src="views/shareissue/shareissue.controller.js"></script>
+        <script src="views/voucher/voucher.controller.js"></script>
         <script src="scripts/factories.js"></script>
         <script src="scripts/authentication.service.js"></script>
         <!-- endbuild -->

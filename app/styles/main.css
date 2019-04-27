@@ -3,7 +3,7 @@
 
 /*body{width: 100%;height: 100%;}*/
 /*-----------------Color shadows----------------------*/
-.shadow{box-shadow: 0px 12px 15px -15px rgba(48,48,47,1) !important;}
+.shadow{box-shadow: 0px 12px 30px -15px rgba(48,48,47,1) !important;}
 .primary-bg{background-color: #384aeb}
 .primary-text{color: #384aeb}
 .partition-bg{background-color: #e0e0e0;}
@@ -35,6 +35,7 @@
     border-bottom: 0;
     border-left: .3em solid transparent;
 }
+
 /*-----------------Form----------------------*/
 .form-left-bg{background-position: center;background-size: 100% 100%;width: 100%;}
 .form-control{border-radius: 0}
@@ -46,7 +47,18 @@
 .form-control:focus div.partition-bg{box-shadow: 0px 12px 15px -15px rgb(48, 48, 47) !important;}
 .error{color: red}
 .f-col-2{width: 100%;display: inline-flex;}
-.f-col-2 input{max-width: 49%; margin-right: 17px;}
+.f-col-2 input, .f-col-2 select{max-width: 49%; margin-right: 17px;}
+.f-col-2 .m-rt-15{margin-right: 15px;}
+.f-col-3{width: 100%;display: inline-flex;}
+.f-col-3 input,.f-col-3 select{max-width: 32%; margin-right: 17px;}
+.f-col-4{width: 100%;display: inline-flex;}
+.f-col-4 input,.f-col-4 select{max-width: 24%; margin-right: 12px;}
+.f-col-5{width: 100%;display: inline-flex;}
+.f-col-5 input,.f-col-5 select{max-width: 18.9%; margin-right: 11.9px;}
+.f-col-2-sub{width: 100%; display: inline-flex}
+.f-col-2-sub input,.f-col-2-sub select{max-width: 48%;}
+.f-col-2-sub input:first-child,.f-col-2-sub select:first-child{margin-right: 20px;}
+.section-ht{height: 84px;}
 
 /*-----------------Button----------------------*/
 .btn{border-radius: 50px !important;}
@@ -71,10 +83,13 @@
   left: 11%;
   transform: translate(-50%, -50%);
 }
+.disreport{background-color: aliceblue; padding: 1px 10px; margin-left: 1px; color: #28a745}
+.bd-highlight {background-color: rgba(86,61,124,.15); border: 1px solid rgba(86,61,124,.15);}
+
+/*-----------------Footer----------------------*/
+footer{width: 100%; position: absolute; bottom: 0; left: 0;}
 .acc-footer{border-top: 1px solid #6c757d80;padding-bottom: 0 !important;}
 .u-active{border: 1px solid #ccc;}
-
-
 
 /*-----------------Media Queries----------------------*/
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
@@ -96,22 +111,41 @@
         text-align: center;    
     }
     .loged-user{width: 100%;text-align: center;}
+
 	/*-----------------Form----------------------*/
 	.form-left-bg{background-position: center;background-size: 100% 100%;width: 100%;padding-top: 120px;padding-bottom: 120px;}
 	.f-col-2{width: 100%;display: block;}
-	.f-col-2 input:last-child{margin-top: 8px;}
-	.f-col-2 input{max-width: 100%;}
+    .f-col-2 input:last-child{margin-top: 8px;}
+    .f-col-2 select{margin-bottom:8px;}
+    .f-col-2 input,.f-col-2 select{max-width: 100%;}
+    .f-col-2 .m-rt-15{margin-right: 0;}
+    .f-col-2-sub {width: 100%;display: block;}
+    .f-col-2-sub input,.f-col-2-sub select{max-width: 100%;margin-bottom: 8px}
+
+    .f-col-3{width: 100%;display: block;}
+	.f-col-3 input,.f-col-3 select {margin-bottom: 8px;}
+    .f-col-3 input,.f-col-3 select{max-width: 100%;}
+
+    .f-col-4{width: 100%;display: block;}
+	.f-col-4 input {margin-top: 8px;}
+    .f-col-4 input,.f-col-4 select{max-width: 100%;}
+
+    .f-col-5{width: 100%;display: block;}
+	.f-col-5 input {margin-top: 8px;}
+    .f-col-5 input,.f-col-5 select{max-width: 100%;}
+    .f-col-5 select{margin-top: 8px;}
+
+    .section-ht{height: 15px;}
+    .r-pan-top{margin-top: 0 !important;margin-bottom: 15px !important;}
+
 	/*-----------------Footer----------------------*/
 	footer .flex-wrap .p-2{text-align: center}
-	footer .flex-wrap .p-2:last-child{width: 100%;text-align: center;}
+    footer .flex-wrap .p-2:last-child{width: 100%;text-align: center;}    
 }
 @media only screen and (min-device-width: 480px) and (max-device-width: 768px) {
 	/*-----------------Form----------------------*/
 	.form-left-bg{background-position: center;background-size: 100% 100%;width: 100%;padding-top: 120px;padding-bottom: 120px;}
 }
-
-
-
 
 /* ---------------------------------------------------
     SIDEBAR STYLE
@@ -258,3 +292,4 @@ a.article:hover {
     top: 0;
     right: 0;
 }
+

@@ -9,7 +9,7 @@
         'ngRoute',
         'ngSanitize',
         'ngTouch',
-    'angularjs-datetime-picker'
+       'angularjs-datetime-picker'
       ])
       .config(configConfig)
       .run(run)
@@ -49,6 +49,46 @@
       controller: 'loginController',
       controllerAs: 'loginController'
     })
+    .when('/kycindividual', {
+      templateUrl: 'views/kycindividual/kycindividual.view.html',
+      controller: 'kycindividualController',
+      controllerAs: 'kycindividualController'
+    })
+    .when('/kycnonindividual', {
+      templateUrl: 'views/kycnonindividual/kycnonindividual.view.html',
+      controller: 'kycnonindividualController',
+      controllerAs: 'kycnonindividualController'
+    })
+    .when('/customermap', {
+      templateUrl: 'views/customermap/customermap.view.html',
+      controller: 'customermapController',
+      controllerAs: 'customermapController'
+    })
+    .when('/membership', {
+      templateUrl: 'views/membership/membership.view.html',
+      controller: 'membershipController',
+      controllerAs: 'membershipController'
+    })  
+    .when('/sharemaster', {
+      templateUrl: 'views/sharemaster/sharemaster.view.html',
+      controller: 'sharemasterController',
+      controllerAs: 'sharemasterController'
+    }) 
+    .when('/shareaccount', {
+      templateUrl: 'views/shareaccount/shareaccount.view.html',
+      controller: 'shareaccountController',
+      controllerAs: 'shareaccountController'
+    }) 
+    .when('/shareissue', {
+      templateUrl: 'views/shareissue/shareissue.view.html',
+      controller: 'shareissueController',
+      controllerAs: 'shareissueController'
+    }) 
+    .when('/voucher', {
+      templateUrl: 'views/voucher/voucher.view.html',
+      controller: 'voucherController',
+      controllerAs: 'voucherController'
+    })   
     .otherwise({
       redirectTo: '/'
     });
