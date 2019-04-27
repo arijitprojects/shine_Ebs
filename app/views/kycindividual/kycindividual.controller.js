@@ -405,7 +405,10 @@ $scope.GetSelectedCustomerstatusid = function(){
     console.log("$scope.customerstatusid.customerstatusidId : ", $scope.customerstatusid.customerstatusidId);
 }
 
+$scope.submitForm = function(){
 
+
+}
 
 
 
