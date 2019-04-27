@@ -406,6 +406,9 @@ $scope.GetSelectedCustomerstatusid = function(){
 
 $scope.submitForm = function(){
 
+    if($scope.salutations.salutationId && $scope.relationships.relationshipId){
+
+    }
 
 }
 
