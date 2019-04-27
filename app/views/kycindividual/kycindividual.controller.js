@@ -26,7 +26,6 @@
         $scope.gp ={};
         $scope.village ={};
         $scope.incometype ={};
-        $scope.kycindividualForm = {};
         $scope.customerstatusid= {};
 
         //salutation
