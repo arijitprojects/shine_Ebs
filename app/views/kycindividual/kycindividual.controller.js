@@ -32,7 +32,6 @@
         restApiFactory("GET", "http://localhost:8989/A_ezi/kyc/salutation.php", {}
         ).post(function(responseData){
             if(responseData.status == "200"){
-               // $scope.districts.districtId = "327";
 
                 $scope.salutations.salutationlist = responseData.salutations;
                 console.log( $scope.salutations.salutationlist);
@@ -48,7 +47,6 @@
         restApiFactory("GET", "http://localhost:8989/A_ezi/kyc/relationship.php", {}
         ).post(function(responseData){
             if(responseData.status == "200"){
-               // $scope.districts.districtId = "327";
 
                 $scope.relationships.relationshiplist = responseData.relationships;
                 console.log( $scope. relationships.relationshiplist);
@@ -64,7 +62,6 @@
           restApiFactory("GET", "http://localhost:8989/A_ezi/kyc/relationship.php", {}
           ).post(function(responseData){
               if(responseData.status == "200"){
-                 // $scope.districts.districtId = "327";
   
                   $scope.relationships2.relationshiplist = responseData.relationships;
                   console.log( $scope. relationships2.relationshiplist);
@@ -80,7 +77,6 @@
          restApiFactory("GET", "http://localhost:8989/A_ezi/kyc/gender.php", {}
          ).post(function(responseData){
              if(responseData.status == "200"){
-                // $scope.districts.districtId = "327";
  
                  $scope.genders.genderlist = responseData.genders;
                  console.log( $scope.genders.genderlist);
@@ -96,7 +92,6 @@
            restApiFactory("GET", "http://localhost:8989/A_ezi/kyc/materialStatus.php", {}
            ).post(function(responseData){
                if(responseData.status == "200"){
-                  // $scope.districts.districtId = "327";
    
                    $scope.maritalStatus.maritalStatuslist = responseData.maritalStatus;
                    console.log(  $scope.maritalStatus.maritalStatuslist);
@@ -112,7 +107,6 @@
            restApiFactory("GET", "http://localhost:8989/A_ezi/kyc/religion.php", {}
            ).post(function(responseData){
                if(responseData.status == "200"){
-                  // $scope.districts.districtId = "327";
    
                    $scope.religions.religionlist = responseData.religions;
                    console.log( $scope.religions.religionlist);
@@ -129,7 +123,6 @@
   restApiFactory("GET", "http://localhost:8989/A_ezi/kyc/caste.php", {}
   ).post(function(responseData){
       if(responseData.status == "200"){
-         // $scope.districts.districtId = "327";
 
           $scope.castes.castelist = responseData.castes;
           console.log( $scope.castes.castelist );
@@ -145,7 +138,6 @@
 restApiFactory("GET", "http://localhost:8989/A_ezi/kyc/bloodgroup.php", {}
 ).post(function(responseData){
     if(responseData.status == "200"){
-       // $scope.districts.districtId = "327";
 
         $scope.bgroup.bgrouplist = responseData.bloodgroups;
         console.log( $scope.bgroup.bgrouplist );
@@ -161,7 +153,6 @@ $scope.GetSelectedbgroup = function(){
 restApiFactory("GET", "http://localhost:8989/A_ezi/kyc/identityproof.php", {}
 ).post(function(responseData){
     if(responseData.status == "200"){
-       // $scope.districts.districtId = "327";
 
         $scope.pidentity.pidentitylist = responseData.identitys;
         console.log( $scope.pidentity.pidentitylist );
@@ -177,7 +168,6 @@ $scope.GetSelectedIdentity = function(){
 restApiFactory("GET", "http://localhost:8989/A_ezi/kyc/addresstype.php", {}
 ).post(function(responseData){
     if(responseData.status == "200"){
-       // $scope.districts.districtId = "327";
 
         $scope.addressType.addressTypelist = responseData.addresstypes;
         console.log( $scope.addressType.addressTypelist );
@@ -193,7 +183,6 @@ $scope.GetSelectedaddressType = function(){
 restApiFactory("GET", "http://localhost:8989/A_ezi/kyc/addressDocuments.php", {}
 ).post(function(responseData){
     if(responseData.status == "200"){
-       // $scope.districts.districtId = "327";
 
         $scope.addressDocument.addressDocumentlist = responseData.addressdocuments;
         console.log($scope.addressDocument.addressDocumentlist );
@@ -211,7 +200,6 @@ $scope.GetSelectedaddressDocument = function(){
 restApiFactory("GET", "http://localhost:8989/A_ezi/kyc/addresstype.php", {}
 ).post(function(responseData){
     if(responseData.status == "200"){
-       // $scope.districts.districtId = "327";
 
         $scope.addressType2.addressTypelist = responseData.addresstypes;
         console.log( $scope.addressType2.addressTypelist );
@@ -227,7 +215,6 @@ $scope.GetSelectedaddressType2 = function(){
 restApiFactory("GET", "http://localhost:8989/A_ezi/kyc/addressDocuments.php", {}
 ).post(function(responseData){
     if(responseData.status == "200"){
-       // $scope.districts.districtId = "327";
 
         $scope.addressDocument2.addressDocumentlist = responseData.addressdocuments;
         console.log($scope.addressDocument2.addressDocumentlist );
@@ -406,7 +393,24 @@ $scope.GetSelectedCustomerstatusid = function(){
 
 $scope.submitForm = function(){
 
-    if($scope.salutations.salutationId && $scope.relationships.relationshipId){
+    if($scope.salutations.salutationId && $scope.relationships.relationshipId &&
+         $scope.relationships2.relationshipId && $scope.genders.genderId && $scope.maritalStatus.mstatusId 
+         && $scope.religions.religionId && $scope.caste.casteId && $scope.bgroup.bgroupId 
+         && $scope.pidentity.pidentityId && $scope.addressType.addressTypeId
+          && $scope.addressDocument.addressDocumentId && $scope.addressType2.addressTypeId 
+          && $scope.addressDocument2.addressDocumentId && $scope.qualification.qualificationId 
+          && $scope.occupation.occupationId && $scope.district.districtId && $scope.block.blockId 
+          && $scope.gp.gpId && $scope.village.villageId && $scope.incometype.incometypeId 
+          && $scope.customerstatusid.customerstatusidId
+           && kycindividualForm.FormNo && kycindividualForm.IndFName && kycindividualForm.IndMName 
+        && kycindividualForm.IndLNamem && kycindividualForm.FthrName && kycindividualForm.MothrName
+         && kycindividualForm.HavePan && kycindividualForm.PanNo && kycindividualForm.Aadhaar 
+         && kycindividualForm.isminor && kycindividualForm.gucifno && kycindividualForm.isLunatic 
+         && kycindividualForm.idmark && kycindividualForm.address1 && kycindividualForm.address2 
+         && kycindividualForm.address3 && kycindividualForm.pin && kycindividualForm.landmark 
+         && kycindividualForm.livingsince && kycindividualForm.ContactNumber 
+         && kycindividualForm.ContactEmail && kycindividualForm.gannualinc 
+         && kycindividualForm.networth && kycindividualForm.otherinfo){
 
     }
 

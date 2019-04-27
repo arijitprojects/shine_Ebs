@@ -26,27 +26,29 @@
 							<div class="col-md-6 col-sm-4 col-12">
 								<div class="partition-bg p-2">
 									<label for="dob">Name of Applicant</label>
-									<input type="text" class="form-control" id="dob" ng-model="" placeholder="Enter Name of Applicant" required>
+									<input type="text" class="form-control" id="dob" placeholder="Enter Name of Applicant" required>
 								</div>
 							</div>
 							<div class="col-md-6 col-sm-4 col-12">
 								<div class="partition-bg p-2">
 									<label for="gender">Date of Incorporation</label>
-									<input datetime-picker class="form-control" id="dob" ng-model="" placeholder="Enter Date of Incorporation" required>
-								</div>
+									<!-- <input datetime-picker class="form-control" id="dob"  placeholder="Enter Date of Incorporation" required> -->
+                                    <input datetime-picker class="form-control" id="kycnonindividualForm.incorporation_date" ng-model="kycnonindividualForm.incorporation_date" placeholder="Enter Date of Incorporation">
+
+                                </div>
 							</div>													
                         </div> 
                         <div class="form-group row">
                                 <div class="col-md-6 col-sm-6 col-12">
                                         <div class="partition-bg p-2">
                                             <label for="orgstatus">Place of Incorporation</label>
-                                            <input type="text" class="form-control" id="poi" ng-model="" placeholder="Enter Place of Incorporation" required>
+                                            <input type="text" class="form-control" id="poi"  placeholder="Enter Place of Incorporation" required>
                                         </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-12">
                                     <div class="partition-bg p-2">		
                                         <label for="regisno">Registration No.</label>						
-                                        <input type="text" class="form-control" id="regisno" ng-model="" placeholder="Enter Registration No." required>
+                                        <input type="text" class="form-control" id="regisno"  placeholder="Enter Registration No." required>
                                     </div>
                                 </div>                                
                         </div>
@@ -54,19 +56,26 @@
                         <div class="form-group row">
 							<div class="col-md-6 col-sm-4 col-12">
 								<div class="partition-bg p-2">
-									<label for="dob">Date of Commencement of Business</label>
-									<input datetime-picker class="form-control" id="dob" ng-model="" placeholder="Enter Date of Commencement of Business">
+                                    <label for="dob">Date of Commencement of Business</label>
+                                    <input datetime-picker class="form-control" id="kycnonindividualForm.commencement_of_business" ng-model="kycnonindividualForm.commencement_of_business" placeholder="Enter Date of Commencement of Business">
+
+									<!-- <input datetime-picker class="form-control" id="dob"  placeholder="Enter Date of Commencement of Business"> -->
 								</div>
 							</div>
 							<div class="col-md-6 col-sm-4 col-12">
 								<div class="partition-bg p-2">
-									<label for="gender">Applicant Type</label>
-									<select class="form-control" id="gender">	
+                                    <label for="applicantType">Applicant Type</label>
+                                    <select id="applicantType" ng-model="applicantType.applicantTypeId"
+                                    ng-options="applicantType.ID as applicantType.DESC for applicantType in applicantType.applicantTypelist"
+                                    ng-change="GetSelectedApplicantType()" class="form-control">
+                                    <option value="">Select Applicant Type</option>
+                                    </select>                                 
+									<!-- <select class="form-control" id="gender">	
 										<option value="">------Applicant Type------</option>
 										<option value="Type 1">Type 1</option>
 										<option value="Type 2">Type 2</option>
                                         <option value="Type 3">Type 3</option>                                        									
-									</select>
+									</select> -->
 								</div>
 							</div>													
                         </div> 
@@ -74,13 +83,20 @@
                                 <div class="col-md-6 col-sm-6 col-12">
                                         <div class="partition-bg p-2">
                                             <label for="orgstatus">Organisation Status</label>
-                                            <select class="form-control" id="orgstatus">	
+                                            <!-- <select class="form-control" id="orgstatus">	
                                                     <option value="">------Organisation Status-----</option>
                                                     <option value="Org Status 1">Org Status 1</option>
                                                     <option value="Org Status 2">Org Status 2</option>
                                                     <option value="Org Status 3">Org Status 3</option>
                                                     <option value="Org Status 4">Org Status 4</option>                                                                   									
-                                            </select>
+                                            </select> -->
+
+                                            <select id="organizationStatus" ng-model="organizationStatus.organizationStatusId"
+                                    ng-options="organizationStatus.ID as organizationStatus.DESC for organizationStatus in organizationStatus.organizationStatuslist"
+                                    ng-change="GetSelectedOrganizationStatus()" class="form-control">
+                                    <option value="">Select Organisation Status</option>
+                                    </select> 
+
                                         </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-12">
@@ -97,39 +113,27 @@
                                         <label for="livingsince">CIF For Authorized Persons</label>
                                         <div class="f-col-2 mb-2">			
                                                 <input type="text" class="form-control col-md-6 col-12" id="peron1" placeholder="Enter Person#1">
-                                                <select class="form-control col-md-6 col-12" id="designation">
-                                                        <option value="">-------Designation------</option>
-                                                        <option value="Deg 1">Deg 1</option>
-                                                        <option value="Deg 2">Deg 2</option>
-                                                        <option value="Deg 3">Deg 3</option>
-                                                        <option value="Deg 4">Deg 4</option>
-                                                        <option value="Deg 5">Deg 5</option>
-                                                        <option value="Deg 6">Deg 6</option>										
-                                                </select>
-                                        </div>
+                                                  <select id="cifdesignation1" ng-model="cifdesignation1.cifdesignationId"
+                                                ng-options="cifdesignation1.ID as cifdesignation1.DESC for cifdesignation1 in cifdesignation1.cifdesignationlist"
+                                                ng-change="GetSelectedDesignation1()" class="form-control">
+                                                <option value="">Select Designation</option>
+                                                </select> 
+                                               </div>
                                         <div class="f-col-2 mb-2">			
                                                 <input type="text" class="form-control col-md-6 col-12" id="peron2" placeholder="Enter Person#2">
-                                                <select class="form-control col-md-6 col-12" id="designation">
-                                                        <option value="">-------Designation------</option>
-                                                        <option value="Deg 1">Deg 1</option>
-                                                        <option value="Deg 2">Deg 2</option>
-                                                        <option value="Deg 3">Deg 3</option>
-                                                        <option value="Deg 4">Deg 4</option>
-                                                        <option value="Deg 5">Deg 5</option>
-                                                        <option value="Deg 6">Deg 6</option>										
-                                                </select>
+                                                <select id="cifdesignation2" ng-model="cifdesignation2.cifdesignationId"
+                                                ng-options="cifdesignation2.ID as cifdesignation2.DESC for cifdesignation2 in cifdesignation2.cifdesignationlist"
+                                                ng-change="GetSelectedDesignation2()" class="form-control">
+                                                <option value="">Select Designation</option>
+                                                </select> 
                                         </div> 
                                         <div class="f-col-2 mb-2">			
                                                 <input type="text" class="form-control col-md-6 col-12" id="peron3" placeholder="Enter Person#3">
-                                                <select class="form-control col-md-6 col-12" id="designation">
-                                                        <option value="">-------Designation------</option>
-                                                        <option value="Deg 1">Deg 1</option>
-                                                        <option value="Deg 2">Deg 2</option>
-                                                        <option value="Deg 3">Deg 3</option>
-                                                        <option value="Deg 4">Deg 4</option>
-                                                        <option value="Deg 5">Deg 5</option>
-                                                        <option value="Deg 6">Deg 6</option>										
-                                                </select>
+                                                <select id="cifdesignation3" ng-model="cifdesignation3.cifdesignationId"
+                                                ng-options="cifdesignation3.ID as cifdesignation3.DESC for cifdesignation3 in cifdesignation3.cifdesignationlist"
+                                                ng-change="GetSelectedDesignation3()" class="form-control">
+                                                <option value="">Select Designation</option>
+                                                </select> 
                                         </div>                                         
                                     </div>
                                 </div>                                
@@ -146,56 +150,29 @@
                                         <input type="text" class="form-control col-md-4 col-12" id="address3" placeholder="Enter add3">
                                     </div>
                                     <div class="f-col-3 mb-2">
-                                            <select class="form-control col-md-4 col-12" id="BDistrict">	
-                                                <option value="">-------Select District-------</option>
-                                                <option value="Bankura">Bankura</option>
-                                                <option value="Barddhaman(Burdwan)">Barddhaman (Burdwan)</option>
-                                                <option value="Dakshin Dinajpur">Dakshin Dinajpur</option>
-                                                <option value="Darjiling (Darjeeling)">Darjiling (Darjeeling)</option>
-                                                <option value="Haora (Howrah)">Haora (Howrah)</option>
-                                                <option value="Hugli (Hooghly)">Hugli (Hooghly)</option>
-                                                <option value="Jalpaiguri">Jalpaiguri</option>
-                                                <option value="Koch Bihar">Koch Bihar</option>
-                                                <option value="Kolkata">Kolkata</option>
-                                                <option value="Maldah">Maldah</option>
-                                                <option value="Murshidabad">Murshidabad</option>
-                                                <option value="Nadia">Nadia</option>
-                                                <option value="North Twenty Four Parganas">North Twenty Four Parganas</option>
-                                                <option value="Paschim Medinipur">Paschim Medinipur</option>
-                                                <option value="Purba Medinipur">Purba Medinipur</option>
-                                                <option value="Puruliya (Purulia)">Puruliya (Purulia)</option>
-                                                <option value="South Twenty Four Parganas">South Twenty Four Parganas</option>
-                                                <option value="Uttar Dinajpur">Uttar Dinajpur</option>
-                                            </select>                                            
-                                            <select class="form-control col-md-4 col-12" id="block">
-                                                  <option value="">-------Select Block-------</option>
-                                                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-                                                <option value="Andhra Pradesh">Andhra Pradesh</option>
-                                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                                                <option value="Assam">Assam</option>
-                                                <option value="Bihar">Bihar</option>
-                                                <option value="Chandigarh">Chandigarh</option>										
-                                            </select>                                            
-                                            <select class="form-control col-md-4 col-12" id="block">
-                                                <option value="">-------Select GP------</option>
-                                                <option value="GP 1">GP 1</option>
-                                                <option value="GP 2">GP 2</option>
-                                                <option value="GP 3">GP 3</option>
-                                                <option value="GP 4">GP 4</option>
-                                                <option value="GP 5">GP 5</option>
-                                                <option value="GP 6">GP 6</option>										
-                                            </select>
+                                        <select id="district" ng-model="district.districtId"
+                                        ng-options="district.ID as district.DESC for district in district.districtlist"
+                                        ng-change="GetSelectedDistrict()" 	class="form-control">
+                                        <option value="">Select District</option>
+                                        </select>
+                                        <select id="block" ng-model="block.blockId"
+                                        ng-options="block.ID as block.DESC for block in block.blocklist"
+                                        ng-change="GetSelectedBlock()" 	class="form-control">
+                                        <option value="">Select Block</option>
+                                        </select>
+
+                                        <select id="gp" ng-model="gp.gpId"
+                                        ng-options="gp.ID as gp.DESC for gp in gp.gplist"
+                                        ng-change="GetSelectedGP()" 	class="form-control">
+                                        <option value="">Select GP</option>
+                                        </select>
                                     </div>
                                     <div class="f-col-3">
-                                            <select class="form-control col-md-4 col-12" id="block">
-                                                <option value="">-------Select Village------</option>
-                                                <option value="Village 1">Village 1</option>
-                                                <option value="Village 2">Village 2</option>
-                                                <option value="Village 3">Village 3</option>
-                                                <option value="Village 4">Village 4</option>
-                                                <option value="Village 5">Village 5</option>
-                                                <option value="Village 6">Village 6</option>										
-                                            </select>                                            
+                                        <select id="village" ng-model="village.villageId"
+                                        ng-options="village.ID as village.DESC for village in village.villagelist"
+                                        ng-change="GetSelectedVillage()" 	class="form-control">
+                                        <option value="">Select Village</option>
+                                        </select>                                       
                                             <input type="text" class="form-control col-md-4 col-12" id="pin" placeholder="Enter Pin">                                            
                                             <input type="text" class="form-control col-md-4 col-12" id="landmark" placeholder="Enter Landmark">
                                     </div>
@@ -221,24 +198,17 @@
                                     <div class="partition-bg p-2">		
                                         <label for="livingsince">Proof of Address</label>
                                         <div class="f-col-2 mb-2">			
-                                                <select class="form-control col-md-6 col-12" id="block">
-                                                        <option value="">-------Address Type------</option>
-                                                        <option value="add 1">add 1</option>
-                                                        <option value="add 2">add 2</option>
-                                                        <option value="add 3">add 3</option>
-                                                        <option value="add 4">add 4</option>
-                                                        <option value="add 5">add 5</option>
-                                                        <option value="add 6">add 6</option>										
-                                                </select>
-                                                <select class="form-control col-md-6 col-12" id="block">
-                                                        <option value="">-------Address Documents------</option>
-                                                        <option value="Doc 1">Doc 1</option>
-                                                        <option value="Doc 2">Doc 2</option>
-                                                        <option value="Doc 3">Doc 3</option>
-                                                        <option value="Doc 4">Doc 4</option>
-                                                        <option value="Doc 5">Doc 5</option>
-                                                        <option value="Doc 6">Doc 6</option>										
-                                                </select>
+                                            <select id="addressType" ng-model="addressType.addressTypeId"
+                                            ng-options="addressType.ID as addressType.DESC for addressType in addressType.addressTypelist"
+                                            ng-change="GetSelectedaddressType()" 	class="form-control">
+                                            <option value="">Select Address Type</option>
+                                            </select>
+    
+                                            <select id="addressDocument" ng-model="addressDocument.addressDocumentId"
+                                            ng-options="addressDocument.ID as addressDocument.DESC for addressDocument in addressDocument.addressDocumentlist"
+                                            ng-change="GetSelectedaddressDocument()" 	class="form-control">
+                                            <option value="">Select Address Document</option>
+                                            </select>
                                         </div>                                        
                                     </div>
                                 </div>                                
@@ -262,7 +232,7 @@
                                 <div class="col-md-4 col-sm-6 col-12">
                                         <div class="partition-bg p-2">
                                             <label for="assondate">As On Date</label>
-                                            <input datetime-picker class="form-control" id="orgRegdDate" ng-model="" placeholder="As On Date">
+                                            <input datetime-picker class="form-control" id="kycnonindividualForm.Br_Opening_Date" ng-model="kycnonindividualForm.as_on_date" placeholder="As On Date">
                                         </div>
                                 </div>
                         </div>
@@ -271,7 +241,7 @@
                                 <div class="col-md-12 col-sm-6 col-12">
                                         <div class="partition-bg p-2">
                                             <label for="otherinfo">Any other information</label>
-                                            <input type="text" class="form-control" id="otherinfo" ng-model="" placeholder="Any other information">
+                                            <input type="text" class="form-control" id="otherinfo" placeholder="Any other information">
                                         </div>
                                 </div>
                         </div>

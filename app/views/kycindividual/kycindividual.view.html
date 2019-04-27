@@ -42,9 +42,9 @@
                                     ng-change="GetSelectedSalutation()" 	class="form-control">
 									<option value="">Select Salutation</option>
 									</select>
-									<input type="text" class="form-control col-md-3 col-12" id="orgRegdNo" placeholder="Enter First Name">
-									<input type="text" class="form-control col-md-3 col-12" id="orgRegdNo" placeholder="Enter Middle Name">
-                                    <input type="text" class="form-control col-md-3 col-12" id="orgRegdNo" placeholder="Enter Last Name">
+									<input type="text" class="form-control col-md-3 col-12" ng-model="kycindividualForm.IndFName" id="IndFName" placeholder="Enter First Name">
+									<input type="text" class="form-control col-md-3 col-12" ng-model="kycindividualForm.IndMName" id="IndMName" placeholder="Enter Middle Name">
+                                    <input type="text" class="form-control col-md-3 col-12" ng-model="kycindividualForm.IndLName" id="IndLName" placeholder="Enter Last Name">
                                     </div>
 								</div>
 							</div>													
@@ -53,7 +53,7 @@
 							<div class="col-md-4 col-sm-4 col-12">
 								<div class="partition-bg p-2">
 									<label for="orgRegdNo">Father’s/ Spouse Name</label>
-									<input type="text" class="form-control" id="fname" placeholder="Father’s/ Spouse Name">
+									<input type="text" class="form-control" ng-model="kycindividualForm.FthrName" id="FthrName" placeholder="Father’s/ Spouse Name">
 								</div>
 							</div>
 							<div class="col-md-4 col-sm-4 col-12">
@@ -70,7 +70,7 @@
 							<div class="col-md-4 col-sm-4 col-12">
 								<div class="partition-bg p-2">
 									<label for="orgRegdNo">Mother’s Maiden Name</label>
-									<input type="text" class="form-control" id="mname" placeholder="Mother’s Maiden Name">
+									<input type="text" class="form-control" ng-model="kycindividualForm.MothrName" id="MothrName" placeholder="Mother’s Maiden Name">
 								</div>
 							</div>							
                         </div>
@@ -148,12 +148,12 @@
                                     <div class="partition-bg p-2">
                                         <div class="f-col-2">                                            
                                             <div class="form-group form-check mb-0 mt-4 r-pan-top">
-                                                <input type="checkbox" class="form-check-input" id="havepan" ng-model="havepan" name="havepan">
+                                                <input type="checkbox" class="form-check-input" ng-model="kycindividualForm.HavePan" id="HavePan" ng-model="havepan" name="havepan">
                                                 <label class="form-check-label" for="havepan">Have PAN?</label>                                                
                                             </div>
                                             <div class="form-group mb-0 ml-auto">
                                                 <label for="panno">PAN No.</label>
-                                                <input type="text" class="form-control mt-0" id="panno" ng-disabled="!havepan" name="panno" placeholder="Enter PAN No." style="max-width:100%" disabled="disabled">
+                                                <input type="text" class="form-control mt-0" ng-model="kycindividualForm.PanNo" id="PanNo" ng-disabled="!havepan" name="panno" placeholder="Enter PAN No." style="max-width:100%" disabled="disabled">
                                             </div>                                                                                    
                                         </div>
                                     </div>
@@ -161,7 +161,7 @@
                                 <div class="col-md-6 col-sm-6 col-12">
                                     <div class="partition-bg p-2">
                                         <label for="pidentity">UID/Aadhaar No.</label>
-                                        <input type="text" class="form-control" id="aadhaar" placeholder="UID/Aadhaar No.">      
+                                        <input type="text" class="form-control" ng-model="kycindividualForm.Aadhaar" id="Aadhaar" placeholder="UID/Aadhaar No.">      
                                     </div>
                                 </div>
                         </div>
@@ -170,13 +170,13 @@
                                 <div class="col-md-6 col-sm-6 col-12">
                                     <div class="partition-bg p-2">
                                         <div class="form-group form-check">
-                                            <input type="checkbox" class="form-check-input" id="isminor"   ng-model="isminor" name="isminor">
+                                            <input type="checkbox" class="form-check-input" id="isminor" ng-model="kycindividualForm.isminor" name="isminor">
                                             <label class="form-check-label" for="isminor">Is Minor</label>                                                
                                         </div>
                                         <div class="f-col-2">
                                             <div class="form-group mb-0 m-rt-15">
                                                 <label for="gucifno">Guardian CIF No.</label>
-                                                <input type="text" class="form-control mt-0" id="gucifno" name="gucifno" ng-disabled="!isminor"  placeholder="Enter Guardian CIF No." style="max-width:100%" disabled="disabled">
+                                                <input type="text" class="form-control mt-0" ng-model="kycindividualForm.gucifno" id="gucifno" name="gucifno" ng-disabled="!isminor"  placeholder="Enter Guardian CIF No." style="max-width:100%" disabled="disabled">
                                             </div>  
                                             <div class="form-group mb-0 ml-auto">
                                                 <!-- <label for="mrelation">Relationship</label>
@@ -199,7 +199,7 @@
                                 <div class="col-md-6 col-sm-6 col-12">
                                         <div class="partition-bg p-2">
                                             <div class="form-group form-check section-ht">
-                                                <input type="checkbox" class="form-check-input" id="isLunatic" name="isLunatic">
+                                                <input type="checkbox" class="form-check-input" ng-model="kycindividualForm.isLunatic" id="isLunatic" name="isLunatic">
                                                 <label class="form-check-label" for="isLunatic">Is Lunatic</label>                                                
                                             </div>
                                             <!--<div class="f-col-2">
@@ -226,7 +226,7 @@
                                 <div class="col-md-6 col-sm-6 col-12">
                                     <div class="partition-bg p-2">		
                                         <label for="idmark">ID Marks</label>						
-                                        <input type="text" class="form-control" id="idmark" placeholder="Enter Identification Mark">
+                                        <input type="text" class="form-control" ng-model="kycindividualForm.idmark" id="idmark" placeholder="Enter Identification Mark">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-12">
@@ -249,9 +249,9 @@
 								<div class="partition-bg p-2">
 									<label for="address">Address for Correspondence</label>
 									<div class="f-col-3 mb-2">                                            
-                                        <input type="text" class="form-control col-md-4 col-12" id="address1" placeholder="Enter add1">
-                                        <input type="text" class="form-control col-md-4 col-12" id="address2" placeholder="Enter add2">
-                                        <input type="text" class="form-control col-md-4 col-12" id="address3" placeholder="Enter add3">
+                                        <input type="text" class="form-control col-md-4 col-12" ng-model="kycindividualForm.address1" id="address1" placeholder="Enter add1">
+                                        <input type="text" class="form-control col-md-4 col-12" ng-model="kycindividualForm.address2" id="address2" placeholder="Enter add2">
+                                        <input type="text" class="form-control col-md-4 col-12" ng-model="kycindividualForm.address3" id="address3" placeholder="Enter add3">
                                     </div>
                                     <div class="f-col-3 mb-2">
                                            
@@ -279,8 +279,8 @@
                                             ng-change="GetSelectedVillage()" 	class="form-control">
                                             <option value="">Select Village</option>
                                             </select>
-                                            <input type="text" class="form-control col-md-4 col-12" id="pin" placeholder="Enter Pin">                                            
-                                            <input type="text" class="form-control col-md-4 col-12" id="landmark" placeholder="Enter Landmark">
+                                            <input type="text" class="form-control col-md-4 col-12" ng-model="kycindividualForm.pin" id="pin" placeholder="Enter Pin">                                            
+                                            <input type="text" class="form-control col-md-4 col-12" ng-model="kycindividualForm.landmark" id="landmark" placeholder="Enter Landmark">
                                     </div>
 								</div>
 							</div>									
@@ -290,15 +290,15 @@
                                 <div class="col-md-4 col-sm-6 col-12">
                                     <div class="partition-bg p-2">		
                                         <label for="livingsince">Living Since (Years)</label>						
-                                        <input type="number" class="form-control" id="livingsince" placeholder="Enter Living Since">
+                                        <input type="number" class="form-control" ng-model="kycindividualForm.livingsince" id="livingsince" placeholder="Enter Living Since">
                                     </div>
                                 </div>
                                 <div class="col-md-8 col-sm-6 col-12">
                                     <div class="partition-bg p-2">
                                         <label for="ContactNumber">Contact Details</label>
                                         <div class="f-col-2-sub">
-                                        <input type="tel" class="form-control" id="ContactNumber" placeholder="Enter Mobile no" minlength="10" maxlength="10">
-                                        <input type="email" class="form-control" id="ContactEmail" placeholder="Enter Email">
+                                        <input type="tel" class="form-control" ng-model="kycindividualForm.ContactNumber" id="ContactNumber" placeholder="Enter Mobile no" minlength="10" maxlength="10">
+                                        <input type="email" class="form-control" ng-model="kycindividualForm.ContactEmail" id="ContactEmail" placeholder="Enter Email">
                                         </div>
                                     </div>
                                 </div>
@@ -357,13 +357,13 @@
                             <div class="col-md-6 col-sm-6 col-12">
                                 <div class="partition-bg p-2">		
                                     <label for="gannualinc">Gross Annual Income</label>						
-                                    <input type="number" class="form-control" id="gannualinc" placeholder="Enter Gross Annual Income">
+                                    <input type="number" class="form-control" ng-model="kycindividualForm.gannualinc" id="gannualinc" placeholder="Enter Gross Annual Income">
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6 col-12">
                                 <div class="partition-bg p-2">	
                                         <label for="networth">Net Worth</label>
-                                        <input type="number" class="form-control" id="networth" placeholder="Enter Net Worth">
+                                        <input type="number" class="form-control" ng-model="kycindividualForm.networth" id="networth" placeholder="Enter Net Worth">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-12">
@@ -410,7 +410,7 @@
                                 <div class="col-md-4 col-sm-6 col-12">
                                         <div class="partition-bg p-2">
                                             <label for="otherinfo">Any other information</label>
-                                            <input type="text" class="form-control" id="otherinfo"  placeholder="Any other information">
+                                            <input type="text" class="form-control" ng-model="kycindividualForm.otherinfo" id="otherinfo"  placeholder="Any other information">
                                         </div>
                                 </div>
                         </div>
