@@ -80,7 +80,7 @@
 								<div class="partition-bg p-2">
 									<label for="dob">Date of Birth</label>
 									<!-- <input datetime-picker class="form-control" id="dob" placeholder="Enter Date or Birth"> -->
-                                    <input datetime-picker class="form-control" id="kycindividualForm.Br_Opening_Date" ng-model="kycindividualForm.Br_Opening_Date" placeholder="Enter Date Of Birth">
+                                    <input datetime-picker class="form-control" id="kycindividualForm.Br_dob_Date" ng-model="kycindividualForm.Br_dob_Date" placeholder="Enter Date Of Birth">
                                 </div>
 							</div>
 							<div class="col-md-4 col-sm-4 col-12">
@@ -147,59 +147,76 @@
                                 <div class="col-md-6 col-sm-6 col-12">
                                     <div class="partition-bg p-2">
                                         <div class="f-col-2">                                            
-                                            <div class="form-group form-check mb-0 mt-4 r-pan-top">
-                                                <input type="checkbox" class="form-check-input" ng-model="kycindividualForm.HavePan" id="HavePan" ng-model="havepan" name="havepan">
+                                            <div class="form-group form-check mb-0 mt-4 r-pan-top" ng-init="kycindividualForm.HavePan=false">
+                                                <input type="checkbox" class="form-check-input"
+                                                 ng-model="kycindividualForm.HavePan" 
+                                                 ng-click="kycindividualForm.HavePan=!kycindividualForm.HavePan"
+                                                 id="HavePan" name="havepan">
                                                 <label class="form-check-label" for="havepan">Have PAN?</label>                                                
                                             </div>
                                             <div class="form-group mb-0 ml-auto">
                                                 <label for="panno">PAN No.</label>
-                                                <input type="text" class="form-control mt-0" ng-model="kycindividualForm.PanNo" id="PanNo" ng-disabled="!havepan" name="panno" placeholder="Enter PAN No." style="max-width:100%" disabled="disabled">
+                                                <input type="text" class="form-control mt-0" ng-model="kycindividualForm.PanNo" id="PanNo" ng-disabled="!kycindividualForm.HavePan" name="panno" placeholder="Enter PAN No." style="max-width:100%" disabled="disabled">
                                             </div>                                                                                    
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-12">
                                     <div class="partition-bg p-2">
-                                        <label for="pidentity">UID/Aadhaar No.</label>
-                                        <input type="text" class="form-control" ng-model="kycindividualForm.Aadhaar" id="Aadhaar" placeholder="UID/Aadhaar No.">      
+
+                                    <div class="f-col-2">                                            
+                                        <div class="form-group form-check mb-0 mt-4 r-pan-top" ng-init="kycindividualForm.adhar=false">
+                                            <input type="checkbox" class="form-check-input" 
+                                            ng-model="kycindividualForm.adhar" 
+                                            ng-click="kycindividualForm.adhar=!kycindividualForm.adhar"
+                                            >
+                                            <label class="form-check-label" for="havepan">Have Aadhar?</label>                                                
+                                        </div>
+                                        <div class="form-group mb-0 ml-auto">
+                                            <label for="panno">UID/Aadhaar No</label>
+                                            <input type="text" class="form-control mt-0" ng-model="kycindividualForm.aadharNo"  ng-disabled="!kycindividualForm.adhar" placeholder="Enter Aadhar No." style="max-width:100%" disabled="disabled">
+                                        </div>                                                                                    
+                                    </div>
                                     </div>
                                 </div>
                         </div>
 
                         <div class="form-group row">
-                                <div class="col-md-6 col-sm-6 col-12">
+                                 <div class="col-md-6 col-sm-6 col-12">
                                     <div class="partition-bg p-2">
-                                        <div class="form-group form-check">
-                                            <input type="checkbox" class="form-check-input" id="isminor" ng-model="kycindividualForm.isminor" name="isminor">
+                                        <div class="form-group form-check" ng-init="kycindividualForm.isminor=false">
+                                            <input type="checkbox" class="form-check-input" 
+                                            ng-model="kycindividualForm.isminor"
+                                            ng-click="kycindividualForm.isminor=!kycindividualForm.isminor"
+                                            >
+
                                             <label class="form-check-label" for="isminor">Is Minor</label>                                                
                                         </div>
                                         <div class="f-col-2">
                                             <div class="form-group mb-0 m-rt-15">
                                                 <label for="gucifno">Guardian CIF No.</label>
-                                                <input type="text" class="form-control mt-0" ng-model="kycindividualForm.gucifno" id="gucifno" name="gucifno" ng-disabled="!isminor"  placeholder="Enter Guardian CIF No." style="max-width:100%" disabled="disabled">
+                                                <input type="text" class="form-control mt-0" ng-model="kycindividualForm.g_cif_No"  ng-disabled="!kycindividualForm.isminor"  placeholder="Enter Guardian CIF No." style="max-width:100%" disabled="disabled">
+
                                             </div>  
                                             <div class="form-group mb-0 ml-auto">
-                                                <!-- <label for="mrelation">Relationship</label>
-                                                <select class="form-control" id="mrelation" name="mrelation" style="max-width:100%" ng-disabled="!isminor" >	
-                                                        <option value="">------Relation-----</option>
-                                                        <option value="Identity 1">Father</option>
-                                                        <option value="Identity 2">Mother</option>
-                                                        <option value="Identity 3">Other</option>                                                                                                                          									
-                                                </select> -->
+
                                                 <label for="relationship2">Relationship</label>
-                                                <select id="relationship2" ng-model="relationships2.relationshipId" ng-disabled="!isminor"
+                                                <select id="relationship2" ng-model="relationships2.relationshipId" ng-disabled="!kycindividualForm.isminor"
                                                 ng-options="relationship2.ID as relationship2.DESC for relationship2 in relationships2.relationshiplist"
                                                 ng-change="GetSelectedRelationship2()" 	class="form-control">
                                                 <option value="">Select Relationship</option>
                                                 </select>
                                             </div>                                                                                  
                                         </div>
-                                    </div>
+                                    </div> 
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-12">
                                         <div class="partition-bg p-2">
-                                            <div class="form-group form-check section-ht">
-                                                <input type="checkbox" class="form-check-input" ng-model="kycindividualForm.isLunatic" id="isLunatic" name="isLunatic">
+                                            <div class="form-group form-check section-ht" ng-init="kycindividualForm.isLunatic=false">
+                                                <input type="checkbox" class="form-check-input" 
+                                                ng-model="kycindividualForm.isLunatic" 
+                                                ng-click="kycindividualForm.isLunatic=!kycindividualForm.isLunatic"
+>
                                                 <label class="form-check-label" for="isLunatic">Is Lunatic</label>                                                
                                             </div>
                                             <!--<div class="f-col-2">
@@ -308,6 +325,14 @@
                                 <div class="col-md-12 col-sm-6 col-12">
                                     <div class="partition-bg p-2">		
                                         <label for="livingsince">Proof of Address</label>
+                                        <div class="form-group form-check mb-0 mt-4 r-pan-top"  ng-init="kycindividualForm.is_non_resident=false">
+                                            <input type="checkbox" class="form-check-input"
+                                             ng-model="kycindividualForm.is_non_resident" 
+                                             ng-click="kycindividualForm.is_non_resident=!kycindividualForm.is_non_resident"
+                                            >
+                                            <label class="form-check-label" for="is_non_resident">Is Non Resident?</label>                                                
+                                        </div>
+
                                         <div class="f-col-2 mb-2">			
                                                 <select id="addressType" ng-model="addressType.addressTypeId"
                                                 ng-options="addressType.ID as addressType.DESC for addressType in addressType.addressTypelist"
@@ -410,7 +435,7 @@
                                 <div class="col-md-4 col-sm-6 col-12">
                                         <div class="partition-bg p-2">
                                             <label for="otherinfo">Any other information</label>
-                                            <input type="text" class="form-control" ng-model="kycindividualForm.otherinfo" id="otherinfo"  placeholder="Any other information">
+                                            <input type="text" class="form-control" ng-model="kycindividualForm.otherinfo"   placeholder="Any other information">
                                         </div>
                                 </div>
                         </div>

@@ -36,7 +36,7 @@
                     $scope.village = {};
                     $scope.incometype = {};
                     $scope.customerstatusid = {};
-
+                   // $scope.kycindividualForm.PanNo ='';
                     //salutation
                     restApiFactory("GET", "http://localhost:8989/A_ezi/kyc/salutation.php", {}
                     ).post(function (responseData) {
@@ -402,8 +402,9 @@
 
                     $scope.submitForm = function () {
 
-                        if ($scope.salutations.salutationId && $scope.relationships.relationshipId &&
-                            $scope.relationships2.relationshipId && $scope.genders.genderId && $scope.maritalStatus.mstatusId
+                      /*   if ($scope.salutations.salutationId && $scope.relationships.relationshipId &&
+                            $scope.relationships2.relationshipId && $scope.genders.genderId
+                             && $scope.maritalStatus.mstatusId
                             && $scope.religions.religionId && $scope.caste.casteId && $scope.bgroup.bgroupId
                             && $scope.pidentity.pidentityId && $scope.addressType.addressTypeId
                             && $scope.addressDocument.addressDocumentId && $scope.addressType2.addressTypeId
@@ -411,21 +412,148 @@
                             && $scope.occupation.occupationId && $scope.district.districtId && $scope.block.blockId
                             && $scope.gp.gpId && $scope.village.villageId && $scope.incometype.incometypeId
                             && $scope.customerstatusid.customerstatusidId
-                            && kycindividualForm.FormNo && kycindividualForm.IndFName && kycindividualForm.IndMName
-                            && kycindividualForm.IndLNamem && kycindividualForm.FthrName && kycindividualForm.MothrName
-                            && kycindividualForm.HavePan && kycindividualForm.PanNo && kycindividualForm.Aadhaar
-                            && kycindividualForm.isminor && kycindividualForm.gucifno && kycindividualForm.isLunatic
-                            && kycindividualForm.idmark && kycindividualForm.address1 && kycindividualForm.address2
-                            && kycindividualForm.address3 && kycindividualForm.pin && kycindividualForm.landmark
-                            && kycindividualForm.livingsince && kycindividualForm.ContactNumber
-                            && kycindividualForm.ContactEmail && kycindividualForm.gannualinc
-                            && kycindividualForm.networth && kycindividualForm.otherinfo) {
+                            && $scope.kycindividualForm.Br_dob_Date 
+                            && $scope.kycindividualForm.FormNo && $scope.kycindividualForm.IndFName 
+                            && $scope.kycindividualForm.IndMName
+                            && $scope.kycindividualForm.IndLNamem && $scope.kycindividualForm.FthrName 
+                            && $scope.kycindividualForm.MothrName
+                            && $scope.kycindividualForm.HavePan && $scope.kycindividualForm.PanNo 
+                            && $scope.kycindividualForm.Aadhaar
+                            && $scope.kycindividualForm.isminor && $scope.kycindividualForm.gucifno 
+                            && $scope.kycindividualForm.isLunatic
+                            && $scope.kycindividualForm.idmark && $scope.kycindividualForm.address1 
+                            && $scope.kycindividualForm.address2
+                            && $scope.kycindividualForm.address3 && $scope.kycindividualForm.pin 
+                            && $scope.kycindividualForm.landmark
+                            && $scope.kycindividualForm.livingsince && $scope.kycindividualForm.ContactNumber
+                            && $scope.kycindividualForm.ContactEmail && $scope.kycindividualForm.gannualinc
+                            && $scope.kycindividualForm.networth && $scope.kycindividualForm.otherinfo) {
 
+                        }else{ */
+                            /* console.log("has value :  : "+JSON.stringify(
+                                {
+                                    HAVE_PAN:$scope.kycindividualForm.HavePan,
+                                    IS_LUNATIC:$scope.kycindividualForm.isLunatic,
+                                     IS_MINOR:$scope.kycindividualForm.isminor,
+                                     HAVE_ADHAAR:$scope.kycindividualForm.adhar ,
+                                     IS_NONRESIDENT:$scope.kycindividualForm.is_non_resident 
+
+                                })); */
+
+                            if($scope.kycindividualForm.PanNo === '' ||
+                                 typeof $scope.kycindividualForm.PanNo === 'undefined'){
+                                    $scope.kycindividualForm.PanNo =null;
+                            }
+
+                            if($scope.kycindividualForm.aadharNo === '' ||
+                            typeof $scope.kycindividualForm.aadharNo === 'undefined'){
+                               $scope.kycindividualForm.aadharNo =null;
+                            }
+                            if($scope.kycindividualForm.g_cif_No === '' ||
+                            typeof $scope.kycindividualForm.g_cif_No === 'undefined'){
+                               $scope.kycindividualForm.g_cif_No =null;
+                            }
+                            if($scope.relationships2.relationshipId === '' ||
+                            typeof $scope.relationships2.relationshipId === 'undefined'){
+                               $scope.relationships2.relationshipId =null;
+                            }
+                            if($scope.kycindividualForm.HavePan==false){
+                                $scope.kycindividualForm.HavePan =0
+                            }else{
+                                $scope.kycindividualForm.HavePan=1
+                            }
+                            if($scope.kycindividualForm.adhar==false){
+                                $scope.kycindividualForm.adhar=0;
+                            }else{
+                                $scope.kycindividualForm.adhar=1;
+                            }
+                            if($scope.kycindividualForm.isminor==false){
+                                $scope.kycindividualForm.isminor=0;
+                            }else{
+                                $scope.kycindividualForm.isminor=1;
+                            }
+                           if($scope.kycindividualForm.isLunatic==false){
+                            $scope.kycindividualForm.isLunatic=0;
+                           }else{
+                            $scope.kycindividualForm.isLunatic=1;
+                           }
+                           if($scope.kycindividualForm.is_non_resident ==false){
+                            $scope.kycindividualForm.is_non_resident=0
+                           }else{
+                            $scope.kycindividualForm.is_non_resident=1;
+                           }
+
+                             console.log("has value :  : "+JSON.stringify(
+                                {  
+                                    FORM_NO:$scope.kycindividualForm.FormNo,
+                                    OLD_CUST_NO:$scope.customerstatusid.customerstatusidId ,
+                                    SALUTATION_ID:$scope.salutations.salutationId,
+                                    FIRST_NAME:$scope.kycindividualForm.IndFName,
+                                    MIDDLE_NAME:$scope.kycindividualForm.IndMName,
+                                    LAST_NAME:$scope.kycindividualForm.IndLName,
+                                    FULL_NAME:$scope.kycindividualForm.IndFName+" "+$scope.kycindividualForm.IndMName+" "+ $scope.kycindividualForm.IndLName,
+                                    FATH_SPOU_NAME:$scope.kycindividualForm.FthrName,
+                                    RELATION_TYPE_ID:$scope.relationships.relationshipId,
+                                    MOTH_MAIDEN_NAME:$scope.kycindividualForm.MothrName,
+                                    HAVE_PAN:$scope.kycindividualForm.HavePan,
+                                    PAN_NO:$scope.kycindividualForm.PanNo,
+                                    HAVE_ADHAAR:$scope.kycindividualForm.adhar ,
+                                    ADHAAR_NO:$scope.kycindividualForm.aadharNo,
+                                    DOB:$scope.kycindividualForm.Br_dob_Date ,
+                                    MARITAL_STATUS_ID:$scope.maritalStatus.mstatusId,
+                                    GENDER_ID:$scope.genders.genderId,
+                                    RELIGION_ID:$scope.religions.religionId,
+                                    CASTE_ID:$scope.caste.casteId,
+                                    BLOOD_GRP_ID:$scope.bgroup.bgroupId,
+                                    EDU_QLF_ID:$scope.qualification.qualificationId,
+                                    OCCUPATION_ID:$scope.occupation.occupationId,
+                                    IS_MINOR:$scope.kycindividualForm.isminor,
+                                    IS_LUNATIC:$scope.kycindividualForm.isLunatic,
+                                    GURDIAN_KYC_ID:$scope.kycindividualForm.g_cif_No ,
+                                    GURDIAN_REL_ID:$scope.relationships2.relationshipId ,
+                                    IS_NONRESIDENT:$scope.kycindividualForm.is_non_resident ,
+                                    INCOME:$scope.kycindividualForm.gannualinc ,
+                                    INCOME_TYPE_ID:$scope.incometype.incometypeId ,
+                                    TDS_STATUS_ID:0 ,
+                                    ENABLE_WEBBANKING:0 ,
+                                    ENABLE_MOBILEBANKING:0 ,
+                                    ENABLE_SMSBANKING:0 ,
+                                    ENABLE_PHONEBANKING:0 ,
+                                    PRIMARY_RM_STAFF_ID:0 ,
+                                    CURRENCY_ID:0 ,
+                                    CUST_SHORT_NAME:null ,
+                                    CUST_PREFFERED_NAME:null ,
+                                    CUST_STATUS_ID :0 ,
+                                    IDENTIFICATION_MARKS:$scope.pidentity.pidentityId ,
+                                    PUBLIC_KEY:$rootScope.globals.currentUser.authdata.authToken ,
+
+                                    as_on_date:$scope.kycindividualForm.as_on_date,
+                                    otherinfo:$scope.kycindividualForm.otherinfo,
+                                    livingsince:$scope.kycindividualForm.livingsince,
+                                    ContactNumber:$scope.kycindividualForm.ContactNumber,
+                                    ContactEmail:$scope.kycindividualForm.ContactEmail,
+                                    address1:$scope.kycindividualForm.address1,
+                                    address2:$scope.kycindividualForm.address2,
+                                    address3:$scope.kycindividualForm.address3,
+                                    districtId:$scope.district.districtId,
+                                    blockId:$scope.block.blockId,
+                                    gpId:$scope.gp.gpId,
+                                    villageId:$scope.village.villageId,
+                                    pin:$scope.kycindividualForm.pin,
+                                    landmark:$scope.kycindividualForm.landmark,
+                                    pidentityId:$scope.pidentity.pidentityId,
+                                    addressTypeId:$scope.addressType.addressTypeId,
+                                    addressDocumentId:$scope.addressDocument.addressDocumentId,
+                                    addressTypeId2:$scope.addressType2.addressTypeId,
+                                    addressDocumentId2:$scope.addressDocument2.addressDocumentId
+
+
+
+                                })); 
                         }
 
                     }
-
-                } //else section close
+              //  } //else section close
 
 
 
