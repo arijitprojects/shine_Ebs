@@ -12,26 +12,37 @@
 			<div class="col-md-10 col-12">
 				<div class="p-3 border mb-5">
 				
-					<form ng-controller="kycnonindividualController" name = "kycnonindividualForm" id="kycnonindividualForm" autocomplete="off">
+					<form ng-controller="kycnonindividualController" name = "kycnonindividualForm"  id="kycnonindividualForm" autocomplete="off">
 						<div class="form-group row">
-							<div class="col-md-12 col-sm-6 col-12">
+							<div class="col-md-6 col-sm-6 col-12">
 								<div class="partition-bg p-2">
-									<label for="branchCode">Form No</label>
-									<input type="text" class="form-control" id="FormNo" placeholder="Form No">
+									<label for="FormNo">Form No</label>
+                                    <input type="text" class="form-control" ng-model="kycnonindividualForm.FormNo" id="FormNo" placeholder="Form No">
 								</div>
-							</div>							
-						</div>
+                            </div>	
+                            <div class="col-md-6 col-sm-6 col-12">
+                            <div class="partition-bg p-2">
+                                <label for="customerstatusid">Customer Status</label>
+                                <select id="customerstatusid" ng-model="customerstatusid.customerstatusidId"
+                                    ng-options="customerstatusid.ID as customerstatusid.DESC for customerstatusid in customerstatusid.customerstatusidlist"
+                                    ng-change="GetSelectedCustomerstatusid()" class="form-control">
+                                    <option value="">Select Customer Status</option>
+                                </select>
+                            </div> 
+                            </div>
+                        </div>
+                        
 						<h5>A. Identity Details (As per Certificate of Incorporation / Registration)</h5>
 						<div class="form-group row">
 							<div class="col-md-6 col-sm-4 col-12">
 								<div class="partition-bg p-2">
-									<label for="dob">Name of Applicant</label>
-									<input type="text" class="form-control" id="dob" placeholder="Enter Name of Applicant" required>
+									<label for="NameOfApplicant">Name of Applicant</label>
+									<input type="text" class="form-control" ng-model="kycnonindividualForm.Name_of_Applicant" id="Name_of_Applicant" placeholder="Enter Name of Applicant" required="required">
 								</div>
 							</div>
 							<div class="col-md-6 col-sm-4 col-12">
 								<div class="partition-bg p-2">
-									<label for="gender">Date of Incorporation</label>
+									<label for="DateOfIncorporation">Date of Birth</label>
 									<!-- <input datetime-picker class="form-control" id="dob"  placeholder="Enter Date of Incorporation" required> -->
                                     <input datetime-picker class="form-control" id="kycnonindividualForm.incorporation_date" ng-model="kycnonindividualForm.incorporation_date" placeholder="Enter Date of Incorporation">
 
@@ -41,14 +52,14 @@
                         <div class="form-group row">
                                 <div class="col-md-6 col-sm-6 col-12">
                                         <div class="partition-bg p-2">
-                                            <label for="orgstatus">Place of Incorporation</label>
-                                            <input type="text" class="form-control" id="poi"  placeholder="Enter Place of Incorporation" required>
+                                            <label for="Place_of_Incorporation">Place of Incorporation</label>
+                                            <input type="text" class="form-control" ng-model="kycnonindividualForm.Place_of_Incorporation" id="Place_of_Incorporation"  placeholder="Enter Place of Incorporation" required>
                                         </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-12">
                                     <div class="partition-bg p-2">		
-                                        <label for="regisno">Registration No.</label>						
-                                        <input type="text" class="form-control" id="regisno"  placeholder="Enter Registration No." required>
+                                        <label for="Registration_Number">Registration No.</label>						
+                                        <input type="text" class="form-control" ng-model="kycnonindividualForm.Registration_Number" id="Registration_Number"  placeholder="Enter Registration No." required>
                                     </div>
                                 </div>                                
                         </div>
@@ -56,7 +67,7 @@
                         <div class="form-group row">
 							<div class="col-md-6 col-sm-4 col-12">
 								<div class="partition-bg p-2">
-                                    <label for="dob">Date of Commencement of Business</label>
+                                    <label for="Date_commencement_of_business">Date of Commencement of Business</label>
                                     <input datetime-picker class="form-control" id="kycnonindividualForm.commencement_of_business" ng-model="kycnonindividualForm.commencement_of_business" placeholder="Enter Date of Commencement of Business">
 
 									<!-- <input datetime-picker class="form-control" id="dob"  placeholder="Enter Date of Commencement of Business"> -->
@@ -96,13 +107,32 @@
                                     ng-change="GetSelectedOrganizationStatus()" class="form-control">
                                     <option value="">Select Organisation Status</option>
                                     </select> 
-
                                         </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-12">
-                                    <div class="partition-bg p-2">		
-                                        <label for="knpanno">PAN No.</label>						
-                                        <input type="text" class="form-control" id="knpanno" placeholder="Enter PAN No.">
+                                    <!-- <div class="partition-bg p-2">		
+                                        <label for="PAN_NO">PAN No.</label>						
+                                        <input type="text" class="form-control" ng-model="kycnonindividualForm.PAN_NO" id="PAN_NO" placeholder="Enter PAN No.">
+                                    </div> -->
+
+                                    <div class="partition-bg p-2">
+                                        <div class="f-col-2">
+                                            <div class="form-group form-check mb-0 mt-4 r-pan-top"
+                                                ng-init="kycnonindividualForm.HavePan=false">
+                                                <input type="checkbox" class="form-check-input"
+                                                    ng-model="kycnonindividualForm.HavePan"
+                                                    ng-click="kycnonindividualForm.HavePan=!kycnonindividualForm.HavePan"
+                                                    id="HavePan" name="havepan">
+                                                <label class="form-check-label" for="havepan">Have PAN?</label>
+                                            </div>
+                                            <div class="form-group mb-0 ml-auto">
+                                                <label for="panno">PAN No.</label>
+                                                <input type="text" class="form-control mt-0"
+                                                    ng-model="kycnonindividualForm.PanNo" id="PanNo"
+                                                    ng-disabled="!kycnonindividualForm.HavePan" name="panno"
+                                                    placeholder="Enter PAN No." style="max-width:100%" disabled="disabled">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>                                
                         </div>
@@ -112,26 +142,26 @@
                                     <div class="partition-bg p-2">		
                                         <label for="livingsince">CIF For Authorized Persons</label>
                                         <div class="f-col-2 mb-2">			
-                                                <input type="text" class="form-control col-md-6 col-12" id="peron1" placeholder="Enter Person#1">
+                                                <input type="text" class="form-control col-md-6 col-12" ng-model="kycnonindividualForm.CIF_For_Authorized_Person1" id="CIF_For_Authorized_Person1" placeholder="Enter Person#1">
                                                   <select id="cifdesignation1" ng-model="cifdesignation1.cifdesignationId"
                                                 ng-options="cifdesignation1.ID as cifdesignation1.DESC for cifdesignation1 in cifdesignation1.cifdesignationlist"
-                                                ng-change="GetSelectedDesignation1()" class="form-control">
+                                                ng-change="GetSelectedDesignation1()" class="form-control col-md-6 col-12">
                                                 <option value="">Select Designation</option>
                                                 </select> 
                                                </div>
                                         <div class="f-col-2 mb-2">			
-                                                <input type="text" class="form-control col-md-6 col-12" id="peron2" placeholder="Enter Person#2">
+                                                <input type="text" class="form-control col-md-6 col-12" ng-model="kycnonindividualForm.CIF_For_Authorized_Person2" id="CIF_For_Authorized_Person2" placeholder="Enter Person#2">
                                                 <select id="cifdesignation2" ng-model="cifdesignation2.cifdesignationId"
                                                 ng-options="cifdesignation2.ID as cifdesignation2.DESC for cifdesignation2 in cifdesignation2.cifdesignationlist"
-                                                ng-change="GetSelectedDesignation2()" class="form-control">
+                                                ng-change="GetSelectedDesignation2()" class="form-control col-md-6 col-12">
                                                 <option value="">Select Designation</option>
                                                 </select> 
                                         </div> 
                                         <div class="f-col-2 mb-2">			
-                                                <input type="text" class="form-control col-md-6 col-12" id="peron3" placeholder="Enter Person#3">
+                                                <input type="text" class="form-control col-md-6 col-12" ng-model="kycnonindividualForm.CIF_For_Authorized_Person3" id="CIF_For_Authorized_Person3" placeholder="Enter Person#3">
                                                 <select id="cifdesignation3" ng-model="cifdesignation3.cifdesignationId"
                                                 ng-options="cifdesignation3.ID as cifdesignation3.DESC for cifdesignation3 in cifdesignation3.cifdesignationlist"
-                                                ng-change="GetSelectedDesignation3()" class="form-control">
+                                                ng-change="GetSelectedDesignation3()" class="form-control col-md-6 col-12">
                                                 <option value="">Select Designation</option>
                                                 </select> 
                                         </div>                                         
@@ -145,36 +175,35 @@
 								<div class="partition-bg p-2">
 									<label for="address">Address for Correspondence</label>
 									<div class="f-col-3 mb-2">                                            
-                                        <input type="text" class="form-control col-md-4 col-12" id="address1" placeholder="Enter add1">
-                                        <input type="text" class="form-control col-md-4 col-12" id="address2" placeholder="Enter add2">
-                                        <input type="text" class="form-control col-md-4 col-12" id="address3" placeholder="Enter add3">
+                                        <input type="text" class="form-control col-md-4 col-12" ng-model="kycnonindividualForm.Address_for_Correspondence1" id="Address_for_Correspondence1" placeholder="Enter add1">
+                                        <input type="text" class="form-control col-md-4 col-12" ng-model="kycnonindividualForm.Address_for_Correspondence2" id="Address_for_Correspondence2" placeholder="Enter add2">
+                                        <input type="text" class="form-control col-md-4 col-12" ng-model="kycnonindividualForm.Address_for_Correspondence3" id="Address_for_Correspondence3" placeholder="Enter add3">
                                     </div>
                                     <div class="f-col-3 mb-2">
                                         <select id="district" ng-model="district.districtId"
                                         ng-options="district.ID as district.DESC for district in district.districtlist"
-                                        ng-change="GetSelectedDistrict()" 	class="form-control">
+                                        ng-change="GetSelectedDistrict()" 	class="form-control col-md-4 col-12">
                                         <option value="">Select District</option>
                                         </select>
                                         <select id="block" ng-model="block.blockId"
                                         ng-options="block.ID as block.DESC for block in block.blocklist"
-                                        ng-change="GetSelectedBlock()" 	class="form-control">
+                                        ng-change="GetSelectedBlock()" 	class="form-control col-md-4 col-12">
                                         <option value="">Select Block</option>
                                         </select>
-
                                         <select id="gp" ng-model="gp.gpId"
                                         ng-options="gp.ID as gp.DESC for gp in gp.gplist"
-                                        ng-change="GetSelectedGP()" 	class="form-control">
+                                        ng-change="GetSelectedGP()" 	class="form-control col-md-4 col-12">
                                         <option value="">Select GP</option>
                                         </select>
                                     </div>
                                     <div class="f-col-3">
                                         <select id="village" ng-model="village.villageId"
                                         ng-options="village.ID as village.DESC for village in village.villagelist"
-                                        ng-change="GetSelectedVillage()" 	class="form-control">
+                                        ng-change="GetSelectedVillage()" 	class="form-control col-md-4 col-12">
                                         <option value="">Select Village</option>
                                         </select>                                       
-                                            <input type="text" class="form-control col-md-4 col-12" id="pin" placeholder="Enter Pin">                                            
-                                            <input type="text" class="form-control col-md-4 col-12" id="landmark" placeholder="Enter Landmark">
+                                            <input type="text" class="form-control col-md-4 col-12" ng-model="kycnonindividualForm.pin" id="pin" placeholder="Enter Pin">                                            
+                                            <input type="text" class="form-control col-md-4 col-12" ng-model="kycnonindividualForm.landmark" id="landmark" placeholder="Enter Landmark">
                                     </div>
 								</div>
 							</div>									
@@ -185,9 +214,9 @@
                                     <div class="partition-bg p-2">
                                         <label for="ContactNumber">Contact Details</label>
                                         <div class="f-col-3">
-                                        <input type="tel" class="form-control col-md-4 col-12" id="ContactNumber" placeholder="Enter Landline no">
-                                        <input type="tel" class="form-control col-md-4 col-12" id="ContactNumber" placeholder="Enter Mobile no" minlength="10" maxlength="10">
-                                        <input type="email" class="form-control col-md-4 col-12" id="ContactEmail" placeholder="Enter Email">
+                                        <input type="tel" class="form-control col-md-4 col-12" ng-model="kycnonindividualForm.Landline_Number" id="Landline_Number" placeholder="Enter Landline no">
+                                        <input type="tel" class="form-control col-md-4 col-12" ng-model="kycnonindividualForm.Mobile_Number" id="Mobile_Number" placeholder="Enter Mobile no" minlength="10" maxlength="10">
+                                        <input type="email" class="form-control col-md-4 col-12" ng-model="kycnonindividualForm.Email" id="Email" placeholder="Enter Email">
                                         </div>
                                     </div>
                                 </div>
@@ -197,16 +226,16 @@
                                 <div class="col-md-12 col-sm-6 col-12">
                                     <div class="partition-bg p-2">		
                                         <label for="livingsince">Proof of Address</label>
-                                        <div class="f-col-2 mb-2">			
+                                        <div class="f-col-2 mb-2" style="margin-top:0 !important">			
                                             <select id="addressType" ng-model="addressType.addressTypeId"
                                             ng-options="addressType.ID as addressType.DESC for addressType in addressType.addressTypelist"
-                                            ng-change="GetSelectedaddressType()" 	class="form-control">
+                                            ng-change="GetSelectedaddressType()" 	class="form-control col-md-6 col-12">
                                             <option value="">Select Address Type</option>
                                             </select>
     
                                             <select id="addressDocument" ng-model="addressDocument.addressDocumentId"
                                             ng-options="addressDocument.ID as addressDocument.DESC for addressDocument in addressDocument.addressDocumentlist"
-                                            ng-change="GetSelectedaddressDocument()" 	class="form-control">
+                                            ng-change="GetSelectedaddressDocument()" 	class="form-control col-md-6 col-12">
                                             <option value="">Select Address Document</option>
                                             </select>
                                         </div>                                        
@@ -219,15 +248,25 @@
                         <div class="form-group row">
                                 <div class="col-md-4 col-sm-6 col-12">
                                     <div class="partition-bg p-2">		
-                                        <label for="gannualinc">Gross Annual Income</label>						
-                                        <input type="number" class="form-control" id="gannualinc" placeholder="Enter Gross Annual Income">
+                                        <label for="Gross_Annual_Income">Gross Annual Income</label>						
+                                        <input type="number" class="form-control" ng-model="kycnonindividualForm.Gross_Annual_Income" id="Gross_Annual_Income" placeholder="Enter Gross Annual Income">
                                     </div>
                                 </div>
-                                <div class="col-md-4 col-sm-6 col-12">
+                                <!-- <div class="col-md-4 col-sm-6 col-12">
                                     <div class="partition-bg p-2">
-                                        <label for="networth">Net Worth</label>
-                                        <input type="number" class="form-control" id="networth" placeholder="Enter Net Worth">
+                                        <label for="Net_Worth">Net Worth</label>
+                                        <input type="number" class="form-control" ng-model="kycnonindividualForm.Net_Worth" id="Net_Worth" placeholder="Enter Net Worth">
                                     </div>
+                                </div> -->
+                                <div class="col-md-4 col-sm-6 col-12">
+                                <div class="partition-bg p-2">
+                                    <label for="incometype">Income Type</label>
+                                    <select id="incometype" ng-model="incometype.incometypeId"
+                                        ng-options="incometype.ID as incometype.DESC for incometype in incometype.incometypelist"
+                                        ng-change="GetSelectedIncometype()" class="form-control">
+                                        <option value="">Select Income Type</option>
+                                    </select> 
+                                </div>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-12">
                                         <div class="partition-bg p-2">
@@ -236,18 +275,18 @@
                                         </div>
                                 </div>
                         </div>
-
+                        
                         <div class="form-group row">                                
-                                <div class="col-md-12 col-sm-6 col-12">
+                                <div class="col-lg-12 col-sm-12 col-12">
                                         <div class="partition-bg p-2">
-                                            <label for="otherinfo">Any other information</label>
-                                            <input type="text" class="form-control" id="otherinfo" placeholder="Any other information">
+                                            <label for="Any_Other_Information">Any other information</label>
+                                            <input type="text" class="form-control" ng-model="kycnonindividualForm.Any_Other_Information" id="Any_Other_Information" placeholder="Any other information">
                                         </div>
                                 </div>
                         </div>
 						
 						<div class="form-group row justify-content-end mb-0">
-							<div class="col-md-3">													
+							<div class="col-md-4">													
 								<button type="reset" value="Reset" class="btn btn-secondary px-4">Reset</button>
 								<button type="submit" ng-click="submitForm()" class="btn btn-secondary px-4">Submit</button>  						
 							</div>

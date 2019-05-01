@@ -181,7 +181,19 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
-
+    
+    <script src="https://cdn.jsdelivr.net/npm/ng-auto-validate@1.19.6/dist/jcs-auto-validate.min.js" integrity="sha256-qKVG0BJFjHIAch/lL/ze8xbMPevFnEhvlzYKk/ULgaE=" crossorigin="anonymous"></script>
+    <script>
+        var app=angular.module('shineEbsApp',['jcs-autoValidate']);
+    </script>
+    <script>
+      angular.module('shineEbsApp')
+        .run([
+        'bootstrap4ElementModifier',
+        function (bootstrap4ElementModifier) {
+              bootstrap4ElementModifier.enableValidationStateIcons(true);
+       }]);
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -221,6 +233,10 @@
                 $('.overlay').addClass('active');
                 $('.collapse.in').toggleClass('in');
                 $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+            $('#sidebar .components li a').on('click', function() {              
+                $('#sidebar').removeClass('active');  
+                $('.overlay').removeClass('active');           
             });
         });
     </script>
