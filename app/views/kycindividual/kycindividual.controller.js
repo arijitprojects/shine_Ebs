@@ -550,6 +550,84 @@
 
 
                                 })); 
+
+
+                                restApiFactory("POST", "http://localhost:8989/A_ezi/kyc/individualinsert.php",
+                        JSON.stringify( {  
+                            FORM_NO:$scope.kycindividualForm.FormNo,
+                            OLD_CUST_NO:$scope.customerstatusid.customerstatusidId ,
+                            SALUTATION_ID:$scope.salutations.salutationId,
+                            FIRST_NAME:$scope.kycindividualForm.IndFName,
+                            MIDDLE_NAME:$scope.kycindividualForm.IndMName,
+                            LAST_NAME:$scope.kycindividualForm.IndLName,
+                            FULL_NAME:$scope.kycindividualForm.IndFName+" "+$scope.kycindividualForm.IndMName+" "+ $scope.kycindividualForm.IndLName,
+                            FATH_SPOU_NAME:$scope.kycindividualForm.FthrName,
+                            RELATION_TYPE_ID:$scope.relationships.relationshipId,
+                            MOTH_MAIDEN_NAME:$scope.kycindividualForm.MothrName,
+                            HAVE_PAN:$scope.kycindividualForm.HavePan,
+                            PAN_NO:$scope.kycindividualForm.PanNo,
+                            HAVE_ADHAAR:$scope.kycindividualForm.adhar ,
+                            ADHAAR_NO:$scope.kycindividualForm.aadharNo,
+                            DOB:$scope.kycindividualForm.Br_dob_Date ,
+                            MARITAL_STATUS_ID:$scope.maritalStatus.mstatusId,
+                            GENDER_ID:$scope.genders.genderId,
+                            RELIGION_ID:$scope.religions.religionId,
+                            CASTE_ID:$scope.caste.casteId,
+                            BLOOD_GRP_ID:$scope.bgroup.bgroupId,
+                            EDU_QLF_ID:$scope.qualification.qualificationId,
+                            OCCUPATION_ID:$scope.occupation.occupationId,
+                            IS_MINOR:$scope.kycindividualForm.isminor,
+                            IS_LUNATIC:$scope.kycindividualForm.isLunatic,
+                            GURDIAN_KYC_ID:$scope.kycindividualForm.g_cif_No ,
+                            GURDIAN_REL_ID:$scope.relationships2.relationshipId ,
+                            IS_NONRESIDENT:$scope.kycindividualForm.is_non_resident ,
+                            INCOME:$scope.kycindividualForm.gannualinc ,
+                            INCOME_TYPE_ID:$scope.incometype.incometypeId ,
+                            TDS_STATUS_ID:0 ,
+                            ENABLE_WEBBANKING:0 ,
+                            ENABLE_MOBILEBANKING:0 ,
+                            ENABLE_SMSBANKING:0 ,
+                            ENABLE_PHONEBANKING:0 ,
+                            PRIMARY_RM_STAFF_ID:0 ,
+                            CURRENCY_ID:0 ,
+                            CUST_SHORT_NAME:null ,
+                            CUST_PREFFERED_NAME:null ,
+                            CUST_STATUS_ID :0 ,
+                            IDENTIFICATION_MARKS:$scope.pidentity.pidentityId ,
+                            PUBLIC_KEY:$rootScope.globals.currentUser.authdata.authToken ,
+
+                            as_on_date:$scope.kycindividualForm.as_on_date,
+                            otherinfo:$scope.kycindividualForm.otherinfo,
+                            livingsince:$scope.kycindividualForm.livingsince,
+                            ContactNumber:$scope.kycindividualForm.ContactNumber,
+                            ContactEmail:$scope.kycindividualForm.ContactEmail,
+                            address1:$scope.kycindividualForm.address1,
+                            address2:$scope.kycindividualForm.address2,
+                            address3:$scope.kycindividualForm.address3,
+                            districtId:$scope.district.districtId,
+                            blockId:$scope.block.blockId,
+                            gpId:$scope.gp.gpId,
+                            villageId:$scope.village.villageId,
+                            pin:$scope.kycindividualForm.pin,
+                            landmark:$scope.kycindividualForm.landmark,
+                            pidentityId:$scope.pidentity.pidentityId,
+                            addressTypeId:$scope.addressType.addressTypeId,
+                            addressDocumentId:$scope.addressDocument.addressDocumentId,
+                            addressTypeId2:$scope.addressType2.addressTypeId,
+                            addressDocumentId2:$scope.addressDocument2.addressDocumentId
+
+
+
+                        })
+                    ).post(function (responseData) {
+                        if (responseData.status == "200") {
+                            alert('Non Individual Created, click to Home page');
+                             $location.path("/");
+                        }
+                    }, function (responseData) {
+                        console.log("Error :", responseData);
+                    });
+
                         }
 
                     }

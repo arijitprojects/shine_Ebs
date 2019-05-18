@@ -342,6 +342,59 @@
                                 addressDocumentId:$scope.addressDocument.addressDocumentId
                             }
                         ));
+
+                        restApiFactory("POST", "http://localhost:8989/A_ezi/nonindividual/nonindividualInsert.php",
+                        JSON.stringify({
+                            FORM_NO:$scope.kycnonindividualForm.FormNo,                    
+                            CUST_TYP_CD:1, 
+                            OLD_CUST_NO:$scope.customerstatusid.customerstatusidId,  
+                            FULL_NAME:$scope.kycnonindividualForm.Name_of_Applicant , 
+                            HAVE_PAN:$scope.kycnonindividualForm.HavePan, 
+                            PAN_NO:$scope.kycnonindividualForm.PanNo, 
+                            DOB:$scope.kycnonindividualForm.incorporation_date, 
+                            GOVT_SCHEME_NM:null, 
+                            PARTNER_NO:1, 
+                            INCOME:$scope.kycnonindividualForm.Gross_Annual_Income, 
+                            INCOME_TYPE_ID:$scope.incometype.incometypeId, 
+                            TDS_STATUS_ID:0 ,
+                            ENABLE_WEBBANKING:0 ,
+                            ENABLE_MOBILEBANKING:0 ,
+                            ENABLE_SMSBANKING:0 ,
+                            ENABLE_PHONEBANKING:0 ,
+                            PRIMARY_RM_STAFF_ID:0 ,
+                            CURRENCY_ID:0 ,
+                            CUST_SHORT_NAME:null ,
+                            CUST_PREFFERED_NAME:null ,
+                            CUST_STATUS_ID :1 , 
+                            REMARKS:$scope.kycnonindividualForm.Any_Other_Information, 
+                            APPROVAL_STATUS_ID:0, 
+                            REASON_IF_REJECTED:0, 
+                            PUBLIC_KEY:$rootScope.globals.currentUser.authdata.authToken, 
+                           
+                            ContactNumber:$scope.kycnonindividualForm.Mobile_Number,
+                            ContactEmail:$scope.kycnonindividualForm.Email,
+                            address1:$scope.kycnonindividualForm.Address_for_Correspondence1,
+                            address2:$scope.kycnonindividualForm.Address_for_Correspondence2,
+                            address3:$scope.kycnonindividualForm.Address_for_Correspondence3,
+                            districtId:$scope.district.districtId,
+                            blockId:$scope.block.blockId,
+                            gpId:$scope.gp.gpId,
+                            villageId:$scope.village.villageId,
+                            pin:$scope.kycnonindividualForm.pin,
+                            landmark:$scope.kycnonindividualForm.landmark,
+                            addressTypeId:$scope.addressType.addressTypeId,
+                            addressDocumentId:$scope.addressDocument.addressDocumentId
+                        })
+                    ).post(function (responseData) {
+                        if (responseData.status == "200") {
+                            alert('Non Individual Created, click to Home page');
+                             $location.path("/");
+                        }
+                    }, function (responseData) {
+                        console.log("Error :", responseData);
+                    });
+
+
                    // }
 
                 }
