@@ -3,8 +3,8 @@
 
     angular
         .module('shineEbsApp')
-        .controller('customermapController', ['$scope', '$http', 'restApiFactory','$parse','$location',
-        function customermapController($scope, $http, restApiFactory,$parse,$location){
+        .controller('customermapController', ['$rootScope','$scope', '$http', 'restApiFactory','$parse','$location',
+        function customermapController($rootScope,$scope, $http, restApiFactory,$parse,$location){
             $scope.designations={};
            var contactsFull=[];
            $scope.allJson=[];
@@ -84,11 +84,12 @@
                             if(value2.ID === $scope.contacts.designationsId){
                             
                              var cif={
-                              'Type' : JSON.stringify(value1.Type),
-                              'CUSTOMER_NM': JSON.stringify(value1.CUSTOMER_NM),
+                              'Type' : value1.Type,
+                              'CUSTOMER_NM': value1.CUSTOMER_NM,
+                              'KYC_ID': value1.KYC_ID,
                               'designationsId':$scope.contacts.designationsId,
                               'joiningDate':$scope.contacts.joiningDate,
-                              'cifno1':$scope.contacts.cifno2,
+                              'cifno':$scope.contacts.cifno2,
                               'designation' : value2.DESC
                          };
                          $scope.contacts.push(cif);
@@ -103,11 +104,12 @@
                                 if(value2.ID === $scope.contacts.designationsId){
                                 
                                  var cif={
-                                  'Type' : JSON.stringify(value1.Type),
-                                  'CUSTOMER_NM': JSON.stringify(value1.CUSTOMER_NM),
+                                  'Type' : value1.Type,
+                                  'CUSTOMER_NM': value1.CUSTOMER_NM,
+                                  'KYC_ID': value1.KYC_ID,
                                   'designationsId':$scope.contacts.designationsId,
                                   'joiningDate':$scope.contacts.joiningDate,
-                                  'cifno1':$scope.contacts.cifno1,
+                                  'cifno':$scope.contacts.cifno1,
                                   'designation' : value2.DESC
                              };
                              $scope.contacts.push(cif);
@@ -137,8 +139,31 @@
                 }
                
                 $scope.getAllContact = function(){
-                    console.log("this.list() :" , $scope.contacts);
-                    
+                    console.log("this.list() :" , JSON.stringify({cifinfo: $scope.contacts,
+                        PUBLIC_KEY:$rootScope.globals.currentUser.authdata.authToken,
+                         UserId:$rootScope.globals.currentUser.authdata.username}));
+                         
+                         restApiFactory("POST", 
+                         "http://localhost:8989/A_ezi/customermapping/insertmapping.php", 
+                         JSON.stringify({cifinfo: $scope.contacts,
+                            PUBLIC_KEY:$rootScope.globals.currentUser.authdata.authToken,
+                             UserId:$rootScope.globals.currentUser.authdata.username})).post(function(responseData){
+                                console.log("success :" , responseData);
+                            //  if(responseData.status == "200"){
+                            //      alert('User Created, click to Home page');
+                            //      $location.path("/");
+                            //  }
+
+                            angular.forEach(responseData, function(value, key){
+                                if(value.status === '200'){
+                                    alert('Mapping Done, click to Home page');
+                                  $location.path("/");
+                                }
+                            });
+                             }, function (responseData){
+                             console.log("Error :" , responseData);
+                             });
+
                 }
         
         }])

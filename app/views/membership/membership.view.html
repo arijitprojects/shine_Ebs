@@ -13,111 +13,124 @@
 				<div class="p-3 border mb-5">				
 					<form ng-controller="membershipController" name = "membershipForm" id="membershipForm">	
                         <div class="form-group row">
-                                <div class="col-md-12 col-sm-6 col-12">
+                                <div class="col-md-9 col-sm-6 col-12">
                                     <div class="partition-bg p-2">		
                                         <label for="cifno">CIF No.</label>						
-                                        <input type="text" class="form-control" id="cifno" placeholder="Enter CIF No.">
-                                        <a href="#" class="disreport">Display Individuals Details (View)</a>
+                                        <input type="text" class="form-control" id="cifno"  ng-model="membership.cifno" placeholder="Enter CIF No.">
+                                        <!--<a href="#" class="disreport">Display Individuals Details (View)</a>-->
                                     </div>
+                                </div>   
+                                <div class="row justify-content-end p-3 pt-4 bg-light">                             
+                                <div class="col-md-2 col-sm-6 col-12">                                    		
+                                        <button type="submit" ng-click="submitCIFForm()" class="btn btn-secondary px-4 float-right">Check</button>                                                                          
                                 </div>
-                                <div class="col-md-12 col-sm-6 col-12 d-none">
-                                    <div class="partition-bg p-2">		
-                                        <label for="memberno">Membership No.</label>						
-                                        <input type="text" class="form-control" id="memberno" placeholder="">                                        
-                                    </div>
-                                </div>                                
+                                </div>                               
                         </div>
+                        <div class="form-group row justify-content-center">
+                                <div class="col-md-7">
+                                <div class="teble-responsive">
+                                <table class="table table-striped table-bordered">
+                                        <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Type</th>
+                                                    <th>KYC</th>
+                                                </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr ng-repeat="contact in membership.cif_details">
+                                                    <td>{{ contact.CUSTOMER_NM }}</td>
+                                                    <td>{{ contact.Type }}</td>
+                                                    <td>{{ contact.KYC_ID }}</td>
+                                                    <!-- <td><a href="javascript:void(0)" ng-click="edit(contact.id)">edit</a> | <a href="javascript:void(0)" ng-click="delete(contact.id)">delete</a></td> -->
+                                                </tr>
+                                        </tbody>
+                                </table>
+                                </div>
+                                </div>
+                        </div>
+
 
                         <div class="form-group row">                                                       
                             <div class="col-md-6 col-sm-6 col-12">
                                 <div class="partition-bg p-2">
                                     <label for="oldmemno">Old Membership No</label>
-                                    <input type="text" class="form-control" id="oldmemno" placeholder="Enter Old Membership No.">
+                                    <input type="text" class="form-control" id="oldmemno"  ng-model="membership.old_membership_no" placeholder="Enter Old Membership No.">
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6 col-12">
                                 <div class="partition-bg p-2">		
                                     <label for="memtype">Membership Type</label>						
-                                    <select class="form-control" id="memtype">	
+                                    <!-- <select class="form-control" id="memtype">	
                                         <option value="">------Membership Type-----</option>
                                         <option value="membership type 1">membership type 1</option>
                                         <option value="membership type 2">membership type 2</option>
                                         <option value="membership type 3">membership type 3</option>
                                         <option value="membership type 4">membership type 4</option>                                                                   									
+                                    </select> -->
+                                    <select  ng-model="membership.membershipId"
+                                    ng-options="membership.ID as membership.DESC for membership in membershiptypes"
+                                    ng-change="GetSelectedmemberships()" 	class="form-control col-md-6 col-12" style="max-width: 100%;"> 
+                                    <option value="">Select Membership</option>
                                     </select>
                                 </div>
                             </div> 
+                        </div>
+
+                        <div class="form-group row">                                                       
+                                <div class="col-md-6 col-sm-6 col-12">
+                                    <div class="partition-bg p-2">
+                                        <label for="ledgerno">Ledger No</label>
+                                        <input type="text" class="form-control" id="LedgerNo"  ng-model="membership.Ledger_no"  placeholder="Enter Ledger No.">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-12">
+                                    <div class="partition-bg p-2">
+                                        <label for="foliono">Folio No</label>
+                                        <input type="text" class="form-control" ng-model="membership.folio_no"  id="FolioNo" placeholder="Enter Folio No.">
+                                    </div>
+                                </div> 
                         </div>
 
                         <div class="form-group row">
                             <div class="col-md-4 col-sm-4 col-12">
                                 <div class="partition-bg p-2">		
                                     <label for="memdate">Membership Date</label>						
-                                    <input datetime-picker class="form-control" id="memdate" ng-model="" placeholder="Enter Membership Date" required>
+                                    <input datetime-picker date-format="dd-MM-yyyy" date-only class="form-control" id="memdate"  ng-model="membership.membership_date" placeholder="Enter Membership Date">
                                 </div>
                             </div>                                                       
                             <div class="col-md-4 col-sm-4 col-12">
                                 <div class="partition-bg p-2" style="height: 81px;">
-                                    <div class="form-group form-check">
+                                    <!-- <div class="form-group form-check">
                                         <input type="checkbox" class="form-check-input" id="voteright">
                                         <label class="form-check-label" for="voteright">Has Voting Right</label>
-                                    </div>	                                    
+                                    </div>	                                     -->
+                                    <div class="form-group form-check section-ht"
+                                    ng-init="membership.hasVotingright=false">
+                                    <input type="checkbox" class="form-check-input"
+                                        ng-model="membership.hasVotingright"
+                                        ng-click="membership.hasVotingright=!membership.hasVotingright">
+                                    <label class="form-check-label" for="hasVotingright">Has Voting Right</label>
+                                </div>
                                 </div>
                             </div> 
                             <div class="col-md-4 col-sm-4 col-12">
                                 <div class="partition-bg p-2">		
                                     <label for="addfees">Admission Fees</label>						
-                                    <input type="number" class="form-control" id="addfees" ng-model="" placeholder="Enter Admission Fees" required>
+                                    <input type="number" class="form-control" id="addfees" ng-model="membership.addmission_fees" placeholder="Enter Admission Fees">
                                 </div>
                             </div> 
                         </div> 
                         
                         <div class="form-group row justify-content-end mb-0">
-							<div class="col-md-3">													
-								<button type="reset" value="Reset" class="btn btn-secondary px-4">Reset</button>
-								<button type="submit" ng-click="submitForm()" class="btn btn-secondary px-4">Submit</button>  						
+							<div class="col-md-2">													
+								<!--<button type="reset" value="Reset" class="btn btn-secondary px-4">Reset</button>-->
+								<button type="submit" ng-click="submitForm()" class="btn btn-success px-4">Submit</button>  						
 							</div>
 						</div>
 					</form>					
                 </div>
-                <div class="p-3 border mb-5">
-                    <div class="table-responsive">
-                        <!--<table class="table table-striped table-hover">
-                            <thead class="bg-secondary text-white">
-                            <tr>
-                                <th scope="col">Sl No</th>
-                                <th scope="col">Name of the Individuals</th>
-                                <th scope="col">CIF No</th>
-                                <th scope="col">Designation</th>
-                                <th scope="col">Joining Date</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>5/4/19</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                                <td>5/4/19</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                                <td>5/4/19</td>
-                            </tr>
-                            </tbody>
-                        </table>-->
-                    </div>
-                </div>
+                
 			</div>
 			
 		</div>		

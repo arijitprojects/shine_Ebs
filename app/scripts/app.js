@@ -111,6 +111,7 @@
               $rootScope.logInOrNot = false;
           }
       });
+      $rootScope.getDatetime = Date.now();
   }
 }());
 

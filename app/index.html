@@ -102,7 +102,7 @@
         </button>
 
         <div class="ml-auto d-flex flex-wrap justify-content-end" ng-switch on="globals.currentUser.authdata.authToken == undefined">              
-          <div class="px-2 py-1 text-white"><small>Current LogedIn DateTime</small></div>
+          <div class="px-2 py-1 text-white"><small> {{getDatetime | date:'medium'}}</small></div>
           <div class="px-2 py-1"  ng-switch-default><small><a href="/login" class="decoration-none text-dark btn btn-light px-3 py-1">LogIn</a></small></div>         
           <div class="px-2 py-1 text-white loged-user"  ng-switch-when="false"><small> Hi! {{globals.currentUser.authdata.username}} </small></div>
         </div>

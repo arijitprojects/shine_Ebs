@@ -1,4 +1,3 @@
-
 <section>
 	<div class="container py-5">
 		<div class="row justify-content-center">
@@ -10,112 +9,122 @@
 			</div>	
 					
 			<div class="col-md-10 col-12" ng-controller="customermapController">
-				<div class="p-3 border mb-5">				
-                        <div class="form-group row">
-                                <form  name = "customermapForm1" id="customermapForm">	
-
-                                <div class="col-md-6 col-sm-6 col-12">
+				    <div class="p-3 border mb-5">	
+                            <div class="form-group row"> 
+                                <div class="col-md-9 col-sm-12 col-12">
+                                <form class="w-100" name = "customermapForm1" id="customermapForm">	
                                     <div class="partition-bg p-2">		
                                         <label for="orgcifno">Organisation CIF No.</label>						
                                         <input type="text" class="form-control" id="orgcifno"  ng-model="contacts.cifno1" placeholder="Enter Organisation CIF No.">
                                         <!-- <a href="#" class="disreport">Display Organisation Details (View)</a> -->
+                                    </div>  
+                                </form> 
+                                </div>                             
+                                                           
+                                <div class="row justify-content-end p-3 pt-4 bg-light">
+                                    <div class="col-md-2" >
+                                        <!--<button type="button" class="btn btn-secondary px-4">Save</button>						
+                                        <button type="reset" value="Reset" class="btn btn-secondary px-4">Reset</button>-->
+                                        <button type="submit" ng-click="submitCIFForm()" class="btn btn-secondary px-4 float-right">Check</button>  						
                                     </div>
                                 </div>
-                                </form>
-                                <div class="form-group row justify-content-end mb-0">
-                                    <div class="col-md-3">
-                                        <!--<button type="button" class="btn btn-secondary px-4">Save</button>-->						
-                                        <button type="reset" value="Reset" class="btn btn-secondary px-4">Reset</button>
-                                        <button type="submit" ng-click="submitCIFForm()" class="btn btn-secondary px-4">Check</button>  						
-                                    </div>
-                                </div>
-                            <table class="table table-striped table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Type</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="contact in cifs1">
-                                        <td>{{ contact.CUSTOMER_NM }}</td>
-                                        <td>{{ contact.Type }}</td>
-                                        <!-- <td><a href="javascript:void(0)" ng-click="edit(contact.id)">edit</a> | <a href="javascript:void(0)" ng-click="delete(contact.id)">delete</a></td> -->
-                                    </tr>
-                                </tbody>
-                            </table>
-                       
+                            </div>
 
-                                <div class="col-md-6 col-sm-6 col-12">
+                            <table class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>KYC</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="contact in cifs1">
+                                            <td>{{ contact.CUSTOMER_NM }}</td>
+                                            <td>{{ contact.Type }}</td>
+                                            <td>{{ contact.KYC_ID }}</td>
+                                            <!-- <td><a href="javascript:void(0)" ng-click="edit(contact.id)">edit</a> | <a href="javascript:void(0)" ng-click="delete(contact.id)">delete</a></td> -->
+                                        </tr>
+                                    </tbody>
+                            </table>
+                            
+                        
+                            <div class="form-group row"> 
+                                <div class="col-md-9 col-sm-12 col-12">
                                     <div class="partition-bg p-2">		
                                         <label for="indcifno">Individual CIF No.</label>						
                                         <input type="text" class="form-control" id="indcifno"  ng-model="contacts.cifno2" placeholder="Enter Individual CIF No.">
                                         <a href="#" class="disreport">Display Individuals Details (View)</a>
                                     </div>
-                                    <div class="form-group row justify-content-end mb-0">
-                                        <div class="col-md-3">
-                                            <!--<button type="button" class="btn btn-secondary px-4">Save</button>-->						
-                                            <button type="reset" value="Reset" class="btn btn-secondary px-4">Reset</button>
-                                            <button type="submit" ng-click="submitCIFForm1()" class="btn btn-secondary px-4">Submit</button>  						
-                                        </div>
+                                </div>
+                                <div class="row justify-content-end p-3 pt-4 bg-light">
+                                    <div class="col-md-2">
+                                        <!--<button type="button" class="btn btn-secondary px-4">Save</button>						
+                                        <button type="reset" value="Reset" class="btn btn-secondary px-4">Reset</button>-->
+                                        <button type="submit" ng-click="submitCIFForm1()" class="btn btn-secondary px-4 float-right">Check</button>  						
                                     </div>
-                                <table class="table table-striped table-bordered">
+                                </div>
+                            </div>        
+
+                            <table class="table table-striped table-bordered">
                                     <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Type</th>
-                                        </tr>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Type</th>
+                                                <th>KYC</th>
+                                            </tr>
                                     </thead>
                                     <tbody>
-                                        <tr ng-repeat="contact in cifs2">
-                                            <td>{{ contact.CUSTOMER_NM }}</td>
-                                            <td>{{ contact.Type }}</td>
-                                            <!-- <td><a href="javascript:void(0)" ng-click="edit(contact.id)">edit</a> | <a href="javascript:void(0)" ng-click="delete(contact.id)">delete</a></td> -->
-                                        </tr>
+                                            <tr ng-repeat="contact in cifs2">
+                                                <td>{{ contact.CUSTOMER_NM }}</td>
+                                                <td>{{ contact.Type }}</td>
+                                                <td>{{ contact.KYC_ID }}</td>
+                                                <!-- <td><a href="javascript:void(0)" ng-click="edit(contact.id)">edit</a> | <a href="javascript:void(0)" ng-click="delete(contact.id)">delete</a></td> -->
+                                            </tr>
                                     </tbody>
-                                </table>
-                                </div>                                
-                        </div>
+                            </table>                                                              
+                        
+                            <div class="form-group row">                                                       
+                                <div class="col-md-6 col-sm-6 col-12">
+                                    <div class="partition-bg p-2">
+                                        <label for="designation">Designation</label>
+                                        <!-- <select class="form-control" id="designation">	
+                                                <option value="">------Designation-----</option>
+                                                <option value="Identity 1">designation 1</option>
+                                                <option value="Identity 2">designation 2</option>
+                                                <option value="Identity 3">designation 3</option>
+                                                <option value="Identity 4">designation 4</option>                                                                   									
+                                        </select> -->
+                                        <select  ng-model="contacts.designationsId"
+                                        ng-options="designation.ID as designation.DESC for designation in designations"
+                                        ng-change="GetSelecteddesignations()" 	class="form-control col-md-6 col-12" style="max-width: 100%;"> 
+                                        <option value="">Select Designation</option>
+                                        </select>
+                                    </div>
+                                </div>
 
-                        <div class="form-group row">                                                       
-                            <div class="col-md-6 col-sm-6 col-12">
-                                <div class="partition-bg p-2">
-                                    <label for="designation">Designation</label>
-                                    <!-- <select class="form-control" id="designation">	
-                                            <option value="">------Designation-----</option>
-                                            <option value="Identity 1">designation 1</option>
-                                            <option value="Identity 2">designation 2</option>
-                                            <option value="Identity 3">designation 3</option>
-                                            <option value="Identity 4">designation 4</option>                                                                   									
-                                    </select> -->
-                                    <select  ng-model="contacts.designationsId"
-                                    ng-options="designation.ID as designation.DESC for designation in designations"
-                                    ng-change="GetSelecteddesignations()" 	class="form-control col-md-6 col-12">
-                                    <option value="">Select Designation</option>
-                                    </select>
+                                <div class="col-md-6 col-sm-6 col-12">
+                                    <div class="partition-bg p-2">		
+                                        <label for="doj">Date of Joining</label>						
+                                        <!-- <input datetime-picker class="form-control" id="doj"  placeholder="Enter Date of Joining" required> -->
+                                        <input datetime-picker date-format="dd-MM-yyyy" date-only class="form-control" id="orgRegdDate" ng-model="contacts.joiningDate" placeholder="Enter Registration Date">
+                                    </div>
+                                </div> 
+                            </div>                       
 
-                                </div>
+                            <div class="bg-light p-2">
+                                <div class="form-group row justify-content-end mb-0">
+                                    <div class="col-md-3">
+                                        <!--<button type="button" class="btn btn-secondary px-4">Save</button>						
+                                        <button type="reset" value="Reset" class="btn btn-secondary px-4">Reset</button>-->
+                                        <button type="submit" ng-click="saveContact()" class="btn btn-success px-4" style="float:right">Add Another</button>  						
+                                    </div>
+                                </div>              
                             </div>
-                            <div class="col-md-6 col-sm-6 col-12">
-                                <div class="partition-bg p-2">		
-                                    <label for="doj">Date of Joining</label>						
-                                    <!-- <input datetime-picker class="form-control" id="doj"  placeholder="Enter Date of Joining" required> -->
-                                    <input datetime-picker date-format="dd-MM-yyyy" date-only class="form-control" id="orgRegdDate" ng-model="contacts.joiningDate" placeholder="Enter Registration Date">
-                                </div>
-                            </div> 
-                        </div>
-                        <div class="d-flex bg-light p-2">
-                            <div class="form-group row justify-content-end mb-0">
-                                <div class="col-md-3">
-                                    <!--<button type="button" class="btn btn-secondary px-4">Save</button>-->						
-                                    <button type="reset" value="Reset" class="btn btn-secondary px-4">Reset</button>
-                                    <button type="submit" ng-click="saveContact()" class="btn btn-secondary px-4">Submit</button>  						
-                                </div>
-                            </div>
-              
                         </div>
                     </form>				
-                </div>
+                
+
                 <div class="p-3 border mb-5">
                     <div class="table-responsive">
                         <table class="table table-striped table-hover">
@@ -130,23 +139,23 @@
                             </thead>
                             <tbody>
                                     <tr ng-repeat="contact in contacts">
-                                            <td>{{$index + 1}}</td>
-                                            <td>{{ contact.CUSTOMER_NM }}</td>
-                                            <td>{{ contact.cifno1 || contact.cifno2}}</td>
-                                            <td>{{ contact.designation }}</td>
-                                            <td>{{ contact.joiningDate }}</td>
-                                        </tr>
+                                        <td>{{$index + 1}}</td>
+                                        <td>{{ contact.CUSTOMER_NM }}</td>
+                                        <td>{{ contact.cifno}}</td>
+                                        <td>{{ contact.designation }}</td>
+                                        <td>{{ contact.joiningDate }}</td>
+                                    </tr>
                             </tbody>
-                        </table>
-                        <div class="form-group row justify-content-end mb-0">
-                                <div class="col-md-3">
-                                    <!--<button type="button" class="btn btn-secondary px-4">Save</button>-->						
-                                    <button type="submit" ng-click="getAllContact()" class="btn btn-secondary px-4">Submit</button>  						
-                               
-                                </div>
+                        </table>                        
+                    </div>
+                    <div class="form-group row justify-content-end mb-0">
+                            <div class="col-md-3">
+                                <!--<button type="button" class="btn btn-secondary px-4">Save</button>-->						
+                                <button type="submit" ng-click="getAllContact()" class="btn btn-success px-4 float-right">Submit All</button>  						                               
                             </div>
                     </div>
                 </div>
+            </div>
 			</div>
            
 		</div>		
