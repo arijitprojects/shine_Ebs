@@ -16,13 +16,13 @@
                                 <div class="col-md-6 col-sm-6 col-12">
                                     <div class="partition-bg p-2">		
                                         <label for="authosc">Authorized Share Capital</label>						
-                                        <input type="number" class="form-control" id="authosc" ng-model="" placeholder="Enter Authorized Share Capital" required>
+                                        <input type="number" class="form-control" id="authosc" ng-model="shareMaster.Authorized_Share_Capital" placeholder="Enter Authorized Share Capital" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-12">
                                     <div class="partition-bg p-2">		
                                         <label for="addmissionf">Admission Fees</label>						
-                                        <input type="number" class="form-control" id="addmissionf" ng-model="" placeholder="Enter Admission Fees" required>
+                                        <input type="number" class="form-control" id="addmissionf" ng-model="shareMaster.Admission_Fees" placeholder="Enter Admission Fees" required>
                                     </div>
                                 </div>                                
                         </div>
@@ -31,21 +31,38 @@
                             <div class="col-md-6 col-sm-4 col-12">
                                 <div class="partition-bg p-2">		
                                     <label for="priceps">Price Per Share</label>						
-                                    <input type="number" class="form-control" id="priceps" ng-model="" placeholder="Enter Price Per Share" required>
+                                    <input type="number" class="form-control" id="priceps" ng-model="shareMaster.Price_Per_Share" placeholder="Enter Price Per Share" required>
                                 </div>
                             </div> 
                             <div class="col-md-6 col-sm-4 col-12">
                                 <div class="partition-bg p-2">		
                                     <label for="Effectfd">Effect From Date</label>						
-                                    <input datetime-picker class="form-control" id="Effectfd" ng-model="" placeholder="Enter Effect From Date" required>
+                                    <input datetime-picker date-format="dd-MM-yyyy" date-only class="form-control"   ng-model="shareMaster.Effect_From_Date"  placeholder="Enter Effect From Date">
+
+                                </div>
+                            </div>
+                        </div>  
+
+                        <div class="form-group row">                            
+                            <div class="col-md-6 col-sm-4 col-12">
+                                <div class="partition-bg p-2">		
+                                    <label for="priceps">Resolution No</label>						
+                                    <input type="text" class="form-control"  ng-model="shareMaster.Resolution_No" placeholder="Enter Resolution No" >
+                                </div>
+                            </div> 
+                            <div class="col-md-6 col-sm-4 col-12">
+                                <div class="partition-bg p-2">		
+                                    <label for="Effectfd">Resolution Date</label>						
+                                    <input datetime-picker date-format="dd-MM-yyyy" date-only class="form-control"   ng-model="shareMaster.Resolution_Date"  placeholder="Enter Resolution Date">
+
                                 </div>
                             </div>
                         </div>  
                         
                         <div class="form-group row justify-content-end mb-0">
-							<div class="col-md-3">													
+							<div class="col-md-4">													
 								<button type="reset" value="Reset" class="btn btn-secondary px-4">Reset</button>
-								<button type="submit" ng-click="submitForm()" class="btn btn-secondary px-4">Submit</button>  						
+								<button type="submit" ng-click="submitForm()" class="btn btn-success px-4">Submit</button>  						
 							</div>
 						</div>
 					</form>					
