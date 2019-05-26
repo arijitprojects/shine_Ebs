@@ -11,18 +11,20 @@
                     
             <div class="col-md-10 col-12">
                 <div class="p-3 border mb-5">				
-                    <form ng-controller="shareissueController" name = "shareissueForm" id="shareissueForm">	
+                    <form ng-controller="shareissueController">	
                         <div class="form-group row">
                                 <div class="col-md-10 col-sm-6 col-12">
                                     <div class="partition-bg p-2">		
                                         <label for="cifno">Membership No./CIF No.</label>						
-                                        <input type="text" class="form-control" id="Membership_No_CIF_No" ng-model="shareissueForm.Membership_No_CIF_No" placeholder="Enter Membership No./CIF No.">
+                                        <input type="text" class="form-control" 
+                                         ng-model="shareissueForm.Membership_No_CIF_No" placeholder="Enter Membership No./CIF No.">
                                         <!--<a href="#" class="disreport">Display Individuals Details (View)</a>-->
                                     </div>
                                 </div> 
                                 <div class="row justify-content-end p-3 pt-4 bg-light">                             
                                     <div class="col-md-2 col-sm-2 col-12">                                    		
-                                            <button type="submit" ng-click="submitCIFForm1()" id="clickShow" class="btn btn-secondary px-4 float-right">Check</button>                                                                          
+                                            <button type="submit" ng-click="submitCIFForm1()" 
+                                            class="btn btn-secondary px-4 float-right">Check</button>                                                                          
                                     </div>
                                 </div>
                         </div>
@@ -39,10 +41,10 @@
                                             </tr>
                                     </thead>
                                     <tbody>
-                                            <tr ng-repeat="contact in cifs2">
+                                            <tr ng-repeat="contact in shareissueForm.cifs">
                                                 <td>{{ contact.CUSTOMER_NM }}</td>
                                                 <td>{{ contact.Type }}</td>
-                                                <td>{{ contact.kyc }}</td>
+                                                <td>{{ contact.KYC_ID }}</td>
                                                 <!-- <td><a href="javascript:void(0)" ng-click="edit(contact.id)">edit</a> | <a href="javascript:void(0)" ng-click="delete(contact.id)">delete</a></td> -->
                                             </tr>
                                     </tbody>
@@ -55,13 +57,17 @@
                             <div class="col-md-6 col-sm-6 col-12">
                                 <div class="partition-bg p-2">		
                                     <label for="Issue_Date">Issue Date</label>						
-                                    <input datetime-picker date-format="dd-MM-yyyy" date-only class="form-control" id="Issue_Date" ng-model="shareissueForm.Issue_Date" placeholder="Enter Issue Date">
+                                    <input datetime-picker date-format="dd-MM-yyyy"
+                                     date-only class="form-control" 
+                                      ng-model="shareissueForm.Issue_Date" placeholder="Enter Issue Date">
                                 </div>
                             </div> 
                             <div class="col-md-6 col-sm-6 col-12">
                                 <div class="partition-bg p-2">		
                                     <label for="addmissionf">No of Share Issue</label>						
-                                    <input type="number" class="form-control" id="No_of_Share_Issue" ng-model="shareissueForm.No_of_Share_Issue" placeholder="Enter No of Share Issue">
+                                    <input type="number" class="form-control" 
+                                     ng-model="shareissueForm.No_of_Share_Issue"
+                                      placeholder="Enter No of Share Issue">
                                 </div>
                             </div>
                         </div>
@@ -88,13 +94,13 @@
                             <div class="col-md-6 col-sm-4 col-12">
                                 <div class="partition-bg p-2">		
                                     <label for="priceps">Price Per Share</label>						
-                                    <input type="number" class="form-control" id="Price_Per_Shar" ng-model="shareissueForm.Price_Per_Share" placeholder="Enter Price Per Share" required>
+                                    <input type="number" class="form-control" ng-model="shareissueForm.Price_Per_Share" placeholder="Enter Price Per Share" required>
                                 </div>
                             </div> 
                             <div class="col-md-6 col-sm-4 col-12">
                                 <div class="partition-bg p-2">		
                                     <label for="priceps">Total Amount of Share Issued</label>						
-                                    <input type="number" class="form-control" id="Total_Amount_of_Share_Issued" ng-model="shareissueForm.Total_Amount_of_Share_Issued" placeholder="" required>
+                                    <input type="number" class="form-control"  ng-model="shareissueForm.Total_Amount_of_Share_Issued" placeholder="" required>
                                 </div>
                             </div>
                         </div> 
@@ -102,7 +108,7 @@
                         <div class="form-group row justify-content-end mb-0">
                             <div class="col-md-3">													
                                 <button type="reset" value="Reset" class="btn btn-secondary px-4">Reset</button>
-                                <button type="submit" ng-click="submitForm()" class="btn btn-success px-4">Submit</button>  						
+                                <button type="submit" ng-click="submitFormRest()" class="btn btn-success px-4">Submit</button>  						
                             </div>
                         </div>
 
