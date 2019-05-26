@@ -299,3 +299,5 @@ input,select{    height: 28px !important;
 select{padding-top: 4px !important;} /* field heading */
 h5{font-size: 20px !important;} /*h5 heading */
 h3{font-size: 23px !important;;text-align: center !important;} /* h3 heading */
+table thead{font-size: 11px !important;}
+table tbody{font-size: 11px !important;}

@@ -1,6 +1,6 @@
 
 <section>
-	<div class="container py-5">
+	<div class="container py-5"  ng-controller="shareaccountController">
 		<div class="row justify-content-center">
 			
 			<div class="col-md-10 mb-3 col-12">
@@ -11,7 +11,7 @@
 					
 			<div class="col-md-10 col-12">
 				<div class="p-3 border mb-5">				
-					<form ng-controller="shareaccountController" name ="shareaccountForm" id="shareaccountForm">	
+					<form name ="shareaccountForm" id="shareaccountForm">	
                         <div class="form-group row">
                                 <div class="col-md-12 col-sm-6 col-12">
                                     <div class="partition-bg p-2" style="height:100px">		
@@ -107,68 +107,167 @@
                         </div>
 
                         <div class="form-group row"> 
-                                <div class="col-md-12 col-sm-4 col-12">
-                                    <div class="partition-bg p-2">	
+                                <div class="col-md-12 col-sm-4 col-12" ng-init="share.HasNominee=false">
+                                    <div class="partition-bg p-2"  >	
                                         
-                                        <div class="form-check">
+                                        <div class="form-check" >
                                             <label for="Nominee" style="margin-left: -19px;">Nomination Required</label>
-                                            <input class="form-check-input ml-15 nominee" type="checkbox" name="nominee" value="1" style="margin-left: 10px;">
-                                            <label class="form-check-label" style="margin-left: 30px;">Yes</label>
-                                        </div>
+                                                 <br>
+                                                 <input type="checkbox" class="form-check-input ml-15 nominee"
+                                                ng-model="share.HasNominee"
+                                                ng-click="share.HasNominee=!share.HasNominee"  style="margin-left: 25px; margin-top: 2px;">
+                                            <label class="form-check-label" for="havepan">Yes</label>
 
-                                        <div class="nomineeFields" >
-                                        <div class="form-check-inline">
-                                            <div class="form-check">                                            
-                                                <label class="form-check-label" for="yescif">
-                                                        <input class="form-check-input" type="radio" name="snominee" id="yescif" value="option1">Yes
-                                                </label>
-                                            </div>
-                                        </div>
 
-                                        <div class="form-check-inline">
-                                            <div class="form-check mb-3">                                            
-                                                <label class="form-check-label" for="nocif">
-                                                        <input class="form-check-input" type="radio" name="snominee" id="nocif" value="option2" checked>No
-                                                </label>
-                                            </div>	
                                         </div>
+ <div id="yes_no_block" ng-show ="share.HasNominee==true" >
+                                
 
-                                        <div class="desc"  id="snominee1">
+  <div class="form-check-inline"  ng-repeat="radius in share.nomineeValues" id="radio-{{radius.value}}">
+        <label>
+            <input type="radio" name="radius" ng-checked="radius.checked"  ng-change='selectYesOrNo(share.HasCIF)'
+              ng-model="share.HasCIF" value="{{radius.value}}"> {{radius.name}}
+               
+        </label>
+    </div>
+</div>
+<div id="yes_no_details" ng-show ="share.HasNominee==true" ng-init ="share.HasCIF='yes'" >
+                                        <div class="desc"  id="snominee1"  ng-show ="share.HasCIF=='yes'">
                                             <div class="f-col-3">
-                                            <input type="tel" class="form-control col-md-4 col-12" id="Nominee_CIF_No" ng-model="shareaccountForm.Nominee_CIF_No" placeholder="Nominee CIF No">
-                                            <select class="form-control col-md-4 col-12" id="relation">	
-                                                <option value="">-----Relation------</option>
-                                                <option value="Option 1">Husband</option>
-                                                <option value="Option 2">Wife</option>
-                                                <option value="Option 3">Father</option>
-                                                <option value="Option 3">Mother</option>										
-                                            </select>
-                                            <input type="number" class="form-control col-md-4 col-12" id="Percent_of_Share" ng-model="shareaccountForm.Percent_of_Share" placeholder="Enter % of Share">
+                                            <input type="tel" class="form-control col-md-4 col-12"
+                                            
+                                              ng-model="has_cif_addmore.has_cif_Nominee_CIF_No" placeholder="Nominee CIF No">
+                                           
+                                             <select class="form-control col-md-4 col-12"
+                                               ng-model="has_cif_addmore.cif_present_relationshipId"
+                          ng-options="relationship.ID as relationship.DESC for relationship in relationshipTypes_hasCIF"
+                                    ng-change="GetSelectedrelationship_hasCIF()" 	
+                                     style="max-width: 100%;"> 
+                                    <option value="">Select Relationship</option>
+                                    </select>
+                                            <input type="text" class="form-control col-md-4 col-12"
+                                            
+                                              ng-model="has_cif_addmore.has_cif_Percent_of_Share" placeholder="Enter % of Share">
                                             </div>
                                             <div class="d-flex bg-light p-2 mt-2" style="margin-left: 1px;margin-right: 2px;">
-                                                <a href="#" class="ml-auto btn btn-sm btn-success">Add More</a>
+                                                <button type="button"
+                                                class="ml-auto btn btn-sm btn-success"
+                                                ng-click="AddMoreHasCif()">Add More</button>
                                             </div>
-                                        </div>
-                                        <div class="desc" id="snominee2">
-                                            <div class="f-col-5" id="nonhavecif">
-                                                <input type="text" class="form-control col-md-4 col-12" id="Nominee_Name" ng-model="shareaccountForm.Nominee_Name" placeholder="Nominee Name">
-                                                <input type="text" class="form-control col-md-4 col-12" id="Nominee_Address" ng-model="shareaccountForm.Nominee_Address" placeholder="Nominee Address">
-                                                <input datetime-picker date-format="dd-MM-yyyy" date-only class="form-control" id="Nominee_DOB" ng-model="shareaccountForm.Nominee_DOB" placeholder="Nominee DOB">
-                                                    <select class="form-control col-md-4 col-12" id="relation">	
-                                                        <option value="">-----Relation------</option>
-                                                        <option value="Option 1">Husband</option>
-                                                        <option value="Option 2">Wife</option>
-                                                        <option value="Option 3">Father</option>
-                                                        <option value="Option 3">Mother</option>										
-                                                    </select>
-                                                <input type="number" class="form-control col-md-4 col-12" id="Persentage_Of_Share" ng-model="shareaccountForm.Persentage_Of_Share" placeholder="Enter % of Share">                                            
-                                            </div>
-                                            <div class="d-flex bg-light p-2 mt-2" style="margin-left: 1px;margin-right: 2px;">
-                                                <a href="#" class="ml-auto btn btn-sm btn-success">Add More</a>
-                                            </div>
-                                        </div>
-                                        </div>
 
+                                            <div class="form-group row justify-content-center">
+                                              <div class="col-md-9">
+                                                <div class="table-responsive bg-white mt-2">
+                                                    <table class="table table-bordered table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                         <th>SLno</th>
+                                                        <th>Have nominee?</th>
+                                                        <th>Have Cif?</th>
+                                                        <th>Nominee FIF No</th>
+                                                        <th>Relationship</th>
+                                                        <th>% of Share</th>                                                      
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                   <tr ng-repeat="contact1 in finalvalue track by $index">
+                                                  <td>{{$index + 1}}</td>
+                                                     <td>{{contact1.HasNominee}}</td> 
+                                                        <td>{{contact1.HasCIF}}</td> 
+                                                        <td>{{contact1.has_cif_Nominee_CIF_No}}</td>
+                                                        <td>{{contact1.cif_present_relationshipId}}</td>
+                                                        <td>{{contact1.has_cif_Percent_of_Share}}</td> 
+                                                </tr>
+                                                    </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="desc" id="snominee2"  ng-show ="share.HasCIF=='no'">
+                                            <div class="f-col-4" id="nonhavecif">
+                                                <input type="text" 
+                                                class="form-control col-md-3 col-12"
+                                                 
+                                                 ng-model="share.no_cif_addmore.no_cif_Nominee_Name" placeholder="Nominee Name">
+                                                <input type="text" class="form-control col-md-3 col-12"                                                
+                                                  ng-model="share.no_cif_addmore.no_cif_Nominee_Address" placeholder="Nominee Address">
+                                                <input type="number"
+                                                 class="form-control col-md-3 col-12"
+                                                  ng-model="share.no_cif_addmore.no_cif_Nominee_Age" 
+                                                   ng-change="myAgeCheckingFunc()" placeholder="Nominee Age">                                                                                              
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                      <input type="checkbox" 
+                                                      class="form-check-input col-md-3 col-12"
+                                                      ng-model="share.no_cif_addmore.isMinor"
+                                                      checked disabled>Minor
+                                                    </label>
+                                                </div>                                               
+                                            </div>
+
+                                            <div class="f-col-4">
+                                            <input type="tel" class="form-control col-md-4 col-12" 
+                                            ng-model="share.no_cif_addmore.no_cif_Phone_no" placeholder="Phone No">                                                                                              
+                                           <select class="form-control col-md-4 col-12"
+                                               ng-model="share.no_cif_addmore.cif_not_present_relationshipId"
+                          ng-options="relationship.ID as relationship.DESC for relationship in relationshipTypes_noCIF"
+                                    ng-change="GetSelectedrelationship_noCIF()" 	
+                                     style="max-width: 100%;"> 
+                                    <option value="">Select Relationship</option>
+                                    </select>
+                                                <input type="text" class="form-control col-md-4 col-12" 
+                                               ng-model="share.no_cif_addmore.no_cif_Persentage_Of_Share" placeholder="Enter % of Share">                                            
+                                            </div>
+
+                                            <div class="d-flex bg-light p-2 mt-2" style="margin-left: 1px;margin-right: 2px;">
+                                                <button type="button" 
+                                                class="ml-auto btn btn-sm btn-success"
+                                                 ng-click="AddMoreDoesNotHaveCif()">Add More</button>
+                                            </div>
+
+                                            <div class="form-group row justify-content-center" id="checkShow">
+                                            <div class="col-md-12">
+                                                <div class="table-responsive bg-white mt-2">
+                                                    <table class="table table-bordered table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                        <th>Sl No</th> 
+                                                        <th>Has Nominee ?</th>
+                                                        <th>Has CIF ?</th>
+                                                         <th>Nominee Name</th>
+                                                        <th>Nominee Address</th>
+                                                        <th>Age</th>   
+                                                        <th>Is Minor</th>
+                                                        <th>Phone No</th> 
+                                                        <th>Relationship</th>                                                         
+                                                        <th>% of Share</th>                                                 
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="contact1 in finalvalue11 track by $index">
+                                                        <td>{{$index + 1}}</td>
+                                                         <td>{{contact1.HasNominee}}</td> 
+                                                        <td>{{contact1.HasCIF}}</td> 
+                                                        <td>{{contact1.no_cif_Nominee_Name}}</td>
+                                                        <td>{{contact1.no_cif_Nominee_Address}}</td>
+                                                        <td>{{contact1.no_cif_Nominee_Age}}</td>
+                                                        <td>{{contact1.isMinor}}</td> 
+
+                                                          <td>{{contact1.no_cif_Phone_no}}</td>
+                                                        <td>{{contact1.cif_not_present_relationshipId}}</td>
+                                                        <td>{{contact1.no_cif_Persentage_Of_Share}}</td>                                                                                                
+                                                        </tr>
+                                                    </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            </div>
+
+                                        </div>
+                                       
+</div>
                                     </div> 
                                 </div>
                         </div>
