@@ -24,9 +24,36 @@
                console.log("Error :" , responseData);
                });
         }
-        $scope.submitFormRest = function () {
-            console.log("rest data :" , $scope.shareissueForm);
+       
+
+        console.log("responseData"+JSON.stringify({SHAREtYPE:213}));
+        restApiFactory("POST", "http://localhost:8989/A_ezi/share/shareIssueperShare.php",
+        JSON.stringify({SHAREtYPE:213})).post(function(responseData){
+           // console.log("responseData"+JSON.stringify({responseData}));
+           if(responseData.status == "200"){
+                $scope.shareissueForm.Price_Per_Share=responseData.priceperShare;
+               
+           }
+           }, function (responseData){
+           console.log("Error :" , responseData);
+           });
+
+           $scope.submitFormRest = function () {
+            console.log("rest data :" ,  JSON.stringify({shareissue:$scope.shareissueForm}));
+            restApiFactory("POST", "http://localhost:8989/A_ezi/share/shareIssueInsert.php",
+            JSON.stringify({shareissue:$scope.shareissueForm})).post(function(responseData){
+               // console.log("responseData"+JSON.stringify({responseData}));
+               if(responseData.status == "200"){
+                alert('share Master Created, click to Home page');
+                $location.path("/");
+                   
+               }
+               }, function (responseData){
+               console.log("Error :" , responseData);
+               });
+
         }
+
         }])
 
   
